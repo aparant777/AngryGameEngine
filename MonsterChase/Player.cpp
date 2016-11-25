@@ -20,7 +20,7 @@ void CPlayer::InitializePlayer() {
 }
 
 /* will spill out a character to Move or Exit*/
-char CPlayer::Input() {
+const char CPlayer::Input() {
 	char choice = 'a';
 	printf("Press 'A' to move Left, 'D' for Right, 'W' for Forward and 'S' for Down. Press 'Q' to Quit.\n");
 	choice = _getch();

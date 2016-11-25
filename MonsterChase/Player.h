@@ -12,7 +12,7 @@ public:
 	void DecideToMoveORQuit(const char choice);
 	void Move(const char choice);
 
-	char Input();
+	const char Input();
 
 private:
 	char mName[5];

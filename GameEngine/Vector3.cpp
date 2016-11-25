@@ -128,11 +128,12 @@ Vector3 Vector3::inverse() {
 }
 
 /*print the vector*/
-void Vector3::printInFloat() {
+void Vector3::printInFloat() const {
 	printf("< %f, %f, %f > \n", mX, mY, mZ);
 }
 
-void Vector3::printInInt() {
+
+void Vector3::printInInt() const {
 	int mXInt = static_cast<int>(mX);
 	int mYInt = static_cast<int>(mY);
 	int mZInt = static_cast<int>(mZ);

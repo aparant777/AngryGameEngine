@@ -1,5 +1,6 @@
 #pragma once
-#include"HeapAllocator.h"
+#include"HeapAllocator.h"]
+
 
 class MemoryAllocator {
 public:
@@ -37,15 +38,24 @@ public:
 	void* MemoryRequest_HeapDescriptor(size_t heapDescriptorMemorySize);
 
 	/*Print Total Memory size*/
-	void PrintMemorySize();
+	void PrintMemorySize() const;
 
 	/*Memory delete*/
 	void* MemoryDeallocate(size_t memorySizeRequested);
 
 	/*get the Total Memory Size*/
-	int GetMemorySize();
+	int GetMemorySize() const;
 
 private:
+
+	/*const varaibles replaced from #define*/
+	const unsigned long SAMPLE_MEMORY_SIZE_TOTAL = 1024;
+	const unsigned long SAMPLE_MEMORY_SIZE_HEAP = 512;
+	const unsigned long SAMPLE_MEMORY_SIZE_FREEHEAPDESCRIPTOR_LIST = 256;
+	const unsigned long SAMPLE_MEMORY_SIZE_USEDHEAPDESCRIPTOR_LIST = 256;
+	const unsigned short FREE_MEMORY = 70;	//its F (Free)
+	const unsigned short USED_MEMORY = 85;	//its U (Used)
+
 	bool mIsMemoryAllocated;
 	
 	char* mAllocatedAddress;

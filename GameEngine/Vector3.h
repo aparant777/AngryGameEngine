@@ -24,8 +24,8 @@ public:
 	static Vector3 up;
 	static Vector3 down;
 
-	void printInFloat();
-	void printInInt();
+	void printInFloat() const;
+	void printInInt() const;
 	void input();
 
 	//getters

@@ -5,12 +5,6 @@
 #include<string.h>
 #include<stdio.h>
 
-#define SAMPLE_MEMORY_SIZE_TOTAL 1024
-#define SAMPLE_MEMORY_SIZE_HEAP  512
-#define SAMPLE_MEMORY_SIZE_FREEHEAPDESCRIPTOR_LIST 256
-#define SAMPLE_MEMORY_SIZE_USEDHEAPDESCRIPTOR_LIST 256	
-#define FREE_MEMORY 70	//its F (Free)
-#define USED_MEMORY 85	//its U (Used)
 
 MemoryAllocator::MemoryAllocator() {
 	mIsMemoryAllocated = false;
@@ -121,7 +115,7 @@ void* MemoryAllocator::MemoryRequest_HeapDescriptor(size_t heapDescriptorMemoryS
 	}
 }
 
-void MemoryAllocator::PrintMemorySize() {
+void MemoryAllocator::PrintMemorySize() const {
 	printf("Total Memory availabe is %u. \n", mCurrentMemoryHeapSize);
 }
 
@@ -150,8 +144,7 @@ void* MemoryAllocator::MemoryDeallocate(size_t memorySizeRequested) {
 	}
 }
 
-int MemoryAllocator::GetMemorySize()
-{
+int MemoryAllocator::GetMemorySize() const {
 	return mTotalMemorySize;
 }
 
