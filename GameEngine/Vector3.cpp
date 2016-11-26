@@ -36,15 +36,15 @@ float Vector3::GetPositionZ() const {
 }
 
 /*setter functions*/
-void Vector3::SetPositionX(float x) {
+void Vector3::SetPositionX(const float x) {
 	mX = x;
 }
 
-void Vector3::SetPositionY(float y) {
+void Vector3::SetPositionY(const float y) {
 	mY = y;
 }
 
-void Vector3::SetPositionZ(float z) {
+void Vector3::SetPositionZ(const float z) {
 	mZ = z;
 }
 

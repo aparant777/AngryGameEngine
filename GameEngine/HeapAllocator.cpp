@@ -5,7 +5,7 @@ Heap* heap = nullptr;
 void* HeapAllocator::AllocateMemory(size_t memorySize) {
 
 	printf("Inside AllocateMemory() in HeapAllocator.\n");
-	printf("The requested memory size is %d and TotalMemorySize is %d. \n", memorySize, memoryAllocator.mTotalMemorySize);
+	printf("The requested memory size is %Iu and TotalMemorySize is %Iu. \n", memorySize, memoryAllocator.mTotalMemorySize);
 
 	/*check the memory requested is less than the total allocated memory size*/
 	if (memorySize < memoryAllocator.mTotalMemorySize) {
@@ -69,7 +69,7 @@ void* HeapAllocator::AllocateMemory(size_t memorySize) {
 void HeapAllocator::DeallocateMemory(void* type) {
 	/*get the size of the type*/
 	size_t sizeToBeDeleted = sizeof(type);
-	printf("Size of type is %d.\n", sizeToBeDeleted);
+	printf("Size of type is %zu.\n", sizeToBeDeleted);
 	/*add the descriptor to the free descriptor list*/
 	//heapFreeDescriptorList.AddNode((void*));
 }
@@ -125,7 +125,7 @@ void HeapAllocator::PrintUsedHeapDescriptorList() {
 	int length = heapUsedDescriptorList.mCount;
 	for (int i = 0;i <= length;i++) {
 		HeapDescriptor* heapDescriptor = (HeapDescriptor*) heapUsedDescriptorList.GetElement(i);
-		printf("Heapdescriptor with ID is %d and size %d.\n", heapDescriptor->mID, heapDescriptor->mHeap->mSize);
+		printf("Heapdescriptor with ID is %d and size %zu.\n", heapDescriptor->mID, heapDescriptor->mHeap->mSize);
 	}
 	printf("length is ------> %d.\n", length);
 }

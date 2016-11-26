@@ -51,7 +51,7 @@ void MemoryAllocator::SeperateMemory() {
 void MemoryAllocator::WriteMemory_Free() {
 	/*convert from char* to void*/
 	void* tempAllocatedAddress = mAllocatedAddress;	
-	memset(tempAllocatedAddress, FREE_MEMORY, SAMPLE_MEMORY_SIZE_TOTAL);
+	memset(tempAllocatedAddress, static_cast<int>(FREE_MEMORY), SAMPLE_MEMORY_SIZE_TOTAL);
 }
 
 /*when user requests for memory*/
@@ -59,16 +59,16 @@ void* MemoryAllocator::MemoryRequest(size_t memorySizeRequested) {
 	/*check if memory has been allocated, if no then allocate*/
 	if (mIsMemoryAllocated) {
 		/*check if the first memory block is free*/
-		if (memchr(mCurrentMemoryAddress, FREE_MEMORY, sizeof(char)) != nullptr) {
+		if (memchr(mCurrentMemoryAddress, static_cast<int>(FREE_MEMORY), sizeof(char)) != nullptr) {
 			/*check if the entire block requested by user is free*/ 
-			if (memchr(mCurrentMemoryAddress, FREE_MEMORY, memorySizeRequested) != nullptr) {
+			if (memchr(mCurrentMemoryAddress, static_cast<int>(FREE_MEMORY), memorySizeRequested) != nullptr) {
 				/*check if the heap can be allocated */
 				if (memorySizeRequested < mCurrentMemoryHeapSize) {
 					char* tempAddresss = mCurrentMemoryAddress;
 					/*cast to a void*/
 					void* tempMCurrentMemoryAddress = mCurrentMemoryAddress;
 					/*write to the memory that is now being used*/
-					memset(tempMCurrentMemoryAddress, USED_MEMORY, memorySizeRequested);
+					memset(tempMCurrentMemoryAddress, static_cast<int>(USED_MEMORY), memorySizeRequested);
 					/*bump the currentMemoryAddress pointer to the next free memory*/
 					mCurrentMemoryAddress += memorySizeRequested;
 					/*update the current heap size*/
@@ -116,17 +116,17 @@ void* MemoryAllocator::MemoryRequest_HeapDescriptor(size_t heapDescriptorMemoryS
 }
 
 void MemoryAllocator::PrintMemorySize() const {
-	printf("Total Memory availabe is %u. \n", mCurrentMemoryHeapSize);
+	printf("Total Memory availabe is %zu. \n", mCurrentMemoryHeapSize);
 }
 
 void* MemoryAllocator::MemoryDeallocate(size_t memorySizeRequested) {
 	if (mIsMemoryAllocated) {
 		/*only perform this operation if the memory set be deleted is a used memory*/
-		if (memchr(mCurrentMemoryAddress, USED_MEMORY, sizeof(char)) != nullptr) {
+		if (memchr(mCurrentMemoryAddress, static_cast<int>(USED_MEMORY), sizeof(char)) != nullptr) {
 			//char* tempAddresss = mCurrentMemoryAddress;
 			void* tempMCurrentMemoryAddress = mCurrentMemoryAddress;
 			/*write to the memory that is now being used*/
-			memset(tempMCurrentMemoryAddress, FREE_MEMORY, memorySizeRequested);
+			memset(tempMCurrentMemoryAddress, static_cast<int>(FREE_MEMORY), memorySizeRequested);
 			/*bump the currentMemoryAddress pointer to the next free memory*/
 			mCurrentMemoryAddress -= memorySizeRequested;
 			/*update the current heap size*/
@@ -137,6 +137,7 @@ void* MemoryAllocator::MemoryDeallocate(size_t memorySizeRequested) {
 		}
 		else {
 			printf("Memory is already free. No need to delete");
+			return nullptr;
 		}
 	} else {
 		printf("No memory allocated to delete. \n");
@@ -144,14 +145,14 @@ void* MemoryAllocator::MemoryDeallocate(size_t memorySizeRequested) {
 	}
 }
 
-int MemoryAllocator::GetMemorySize() const {
+size_t MemoryAllocator::GetMemorySize() const {
 	return mTotalMemorySize;
 }
 
-void MemoryAllocator::UpdateHeapSize_Allocate(size_t memorySizeRequested) {
+void MemoryAllocator::UpdateHeapSize_Allocate(const size_t memorySizeRequested) {
 	mCurrentMemoryHeapSize -= memorySizeRequested;
 }
 
-void MemoryAllocator::UpdateHeapSize_Deallocate(size_t memorySizeRequested) {
+void MemoryAllocator::UpdateHeapSize_Deallocate(const size_t memorySizeRequested) {
 	mCurrentMemoryHeapSize += memorySizeRequested;
 }

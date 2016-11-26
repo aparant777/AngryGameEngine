@@ -1,4 +1,5 @@
 #pragma once
+
 /*Linked List implementation*/
 /*This is a template class hence all the function implementations will reside in this class*/
 template<typename T>
@@ -155,6 +156,8 @@ inline Node<T>* LinkedList<T>::GetLast() {
 	return mTail;
 }
 
+#pragma warning(push)
+#pragma warning(disable:4715)
 template<typename T>
 inline Node<T>* LinkedList<T>::GetElement(int number) {
 	if (IsEmpty()) {
@@ -171,12 +174,15 @@ inline Node<T>* LinkedList<T>::GetElement(int number) {
 				currentNode = currentNode->next;
 			}
 			
-				//printf("Requested element not found. \n");
-				//return nullptr;
+			//printf("Requested element not found. \n");
+			//return nullptr;
 			
 		}
 	}
 }
+#pragma warning(pop)
+
+
 
 /*this is an iterator function. Run this in a for loop*/
 template<typename T>

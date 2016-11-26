@@ -18,7 +18,7 @@ struct HeapDescriptor {
 	}
 
 	void GetHeapSize() {
-		printf("Its Block Size is %d. \n", mHeap->mSize);
+		printf("Its Block Size is %Iu. \n", mHeap->mSize);
 	}
 };
 

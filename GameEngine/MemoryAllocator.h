@@ -1,5 +1,6 @@
 #pragma once
-#include"HeapAllocator.h"]
+#include"HeapAllocator.h"
+#include<stdint.h>
 
 
 class MemoryAllocator {
@@ -44,17 +45,17 @@ public:
 	void* MemoryDeallocate(size_t memorySizeRequested);
 
 	/*get the Total Memory Size*/
-	int GetMemorySize() const;
+	size_t GetMemorySize() const;
 
 private:
 
 	/*const varaibles replaced from #define*/
-	const unsigned long SAMPLE_MEMORY_SIZE_TOTAL = 1024;
-	const unsigned long SAMPLE_MEMORY_SIZE_HEAP = 512;
-	const unsigned long SAMPLE_MEMORY_SIZE_FREEHEAPDESCRIPTOR_LIST = 256;
-	const unsigned long SAMPLE_MEMORY_SIZE_USEDHEAPDESCRIPTOR_LIST = 256;
-	const unsigned short FREE_MEMORY = 70;	//its F (Free)
-	const unsigned short USED_MEMORY = 85;	//its U (Used)
+	const size_t SAMPLE_MEMORY_SIZE_TOTAL = 1024;
+	const size_t SAMPLE_MEMORY_SIZE_HEAP = 512;
+	const size_t SAMPLE_MEMORY_SIZE_FREEHEAPDESCRIPTOR_LIST = 256;
+	const size_t SAMPLE_MEMORY_SIZE_USEDHEAPDESCRIPTOR_LIST = 256;
+	const size_t FREE_MEMORY = 70;	//its F (Free)
+	const size_t USED_MEMORY = 85;	//its U (Used)
 
 	bool mIsMemoryAllocated;
 	
@@ -65,7 +66,7 @@ private:
 
 	void SeperateMemory();
 	void WriteMemory_Free();
-	void UpdateHeapSize_Allocate(size_t memorySizeRequested);
-	void UpdateHeapSize_Deallocate(size_t memorySizeRequested);	
+	void UpdateHeapSize_Allocate(const size_t memorySizeRequested);
+	void UpdateHeapSize_Deallocate(const size_t memorySizeRequested);
 };
 

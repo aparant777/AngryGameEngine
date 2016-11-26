@@ -1,3 +1,5 @@
+#pragma once
+
 void Input();
 void Generate();
 void InitializePlayer();
@@ -43,7 +45,7 @@ int main() {
 	//printf("Length of linked list is %d.\n", length);
 	//heapallocator.heapUsedDescriptorList.DeleteLastNode();
 	//HeapDescriptor* heapDescriptor1 = (HeapDescriptor*)heapallocator.heapUsedDescriptorList.GetElement(1);
-	printf("Size of player class is %d", sizeof(player));
+	printf("Size of player class is %zu", sizeof(player));
 	heapallocator.DeallocateMemory(player);
 
 	if (player != nullptr) {

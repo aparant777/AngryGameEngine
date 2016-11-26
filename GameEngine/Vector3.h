@@ -34,9 +34,9 @@ public:
 	float GetPositionZ() const;
 
 	//setters
-	void SetPositionX(float f);
-	void SetPositionY(float f);
-	void SetPositionZ(float f);
+	void SetPositionX(const float f);
+	void SetPositionY(const float f);
+	void SetPositionZ(const float f);
 
 private:
 	float mX;
