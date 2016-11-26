@@ -24,14 +24,14 @@ public:
 	static Vector3 up;
 	static Vector3 down;
 
-	void printInFloat() const;
+	inline void printInFloat() const;
 	void printInInt() const;
-	void input();
+	inline void input();
 
 	//getters
-	float GetPositionX() const;
-	float GetPositionY() const;
-	float GetPositionZ() const;
+	inline float GetPositionX() const { return mX; }
+	inline float GetPositionY() const { return mY; }
+	inline float GetPositionZ() const { return mZ; }
 
 	//setters
 	void SetPositionX(const float f);

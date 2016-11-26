@@ -14,9 +14,9 @@ public:
 	void CMonster::DisplayMonsterData(CMonster* monster);
 	void FreeMemory(CMonster* monster);
 	bool IsDead();
-	char* GetName();
-	float GetPositionX();
-	float GetPositionY();
+	inline char* GetName() { return mName; }
+	inline float GetPositionX() { return mPosition.GetPositionX(); }
+	inline float GetPositionY() { return mPosition.GetPositionY(); }
 
 private:
 	char mName[100];

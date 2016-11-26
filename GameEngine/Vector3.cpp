@@ -22,22 +22,13 @@ Vector3::Vector3(const float x, const float y,const float z) {
 	mZ = z;
 }
 
-/*getter functions*/
-float Vector3::GetPositionX() const {
-	return mX;
-}
-
-float Vector3::GetPositionY() const{
-	return mY;
-}
-
-float Vector3::GetPositionZ() const {
-	return mZ;
-}
-
 /*setter functions*/
-void Vector3::SetPositionX(const float x) {
-	mX = x;
+// void Vector3::SetPositionX(const float x) {
+//	mX = x;
+//}
+
+void Vector3::SetPositionX(const float f) {
+	mX = f;
 }
 
 void Vector3::SetPositionY(const float y) {
@@ -119,7 +110,7 @@ Vector3& Vector3::operator*=(const float f) {
 }
 
 /*inverse of the current vector*/
-Vector3 Vector3::inverse() {
+inline Vector3 Vector3::inverse() {
 	Vector3 v;
 	v.mX = -mX;
 	v.mY = -mY;
@@ -127,22 +118,21 @@ Vector3 Vector3::inverse() {
 	return v;
 }
 
-/*print the vector*/
-void Vector3::printInFloat() const {
+/*print the vector in float*/
+inline void Vector3::printInFloat() const {
 	printf("< %f, %f, %f > \n", mX, mY, mZ);
+	printf("< %d, %d, %d > \n", static_cast<int>(mX), static_cast<int>(mY), static_cast<int>(mZ));
 }
 
-
+/*---------------TO DO : METHOD NOT GETTING INLINED ??, WHEREAS THE SAME BODY IS IN THE PREVIOUS FUNCTION---------------*/
+/*print the vector in int*/
 void Vector3::printInInt() const {
-	int mXInt = static_cast<int>(mX);
-	int mYInt = static_cast<int>(mY);
-	int mZInt = static_cast<int>(mZ);
-
-	printf("< %d, %d, %d > \n", mXInt, mYInt, mZInt);
+	printf("< %d, %d, %d > \n", static_cast<int>(mX), static_cast<int>(mY), static_cast<int>(mZ));
 }
 
+/*------------------------------------------------------------------------------------------------------------------------*/
 /*input the vector*/
-void Vector3::input() {
+inline void Vector3::input() {
 	printf("Enter x: ");
 	scanf_s("%f", &mX);
 	printf("Enter y: ");

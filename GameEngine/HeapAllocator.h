@@ -13,11 +13,11 @@ struct HeapDescriptor {
 	void* mAddress_Self;
 	Heap* mHeap;
 
-	void Print() {
+	inline void Print() {
 		printf("HeapDecriptor %d is. \n", mID);
 	}
 
-	void GetHeapSize() {
+	inline void GetHeapSize() {
 		printf("Its Block Size is %Iu. \n", mHeap->mSize);
 	}
 };
@@ -41,7 +41,7 @@ public:
 	void PrintMemorySize();
 
 	/*Print Used HeapDescriptor List*/
-	void PrintUsedHeapDescriptorList();
+	inline void PrintUsedHeapDescriptorList();
 };
 
 

@@ -28,7 +28,7 @@ const char CPlayer::Input() {
 	return choice;
 }
 
-void CPlayer::DecideToMoveORQuit(const char choice) {
+inline void CPlayer::DecideToMoveORQuit(const char choice) {
 	if (choice == 'A' || choice == 'a' || choice == 'W' || choice == 'w' || choice == 'S' || choice == 's' || choice == 'D' || choice == 'd') {
 		Move(choice);
 	}
@@ -37,7 +37,7 @@ void CPlayer::DecideToMoveORQuit(const char choice) {
 }
 
 /*Moves the Player, either + or - in X or Y*/
-void CPlayer::Move(const char choice) {
+inline void CPlayer::Move(const char choice) {
 	if (choice == 'A' || choice == 'a') {
 		mPosition += mPosition.left;
 		printf("%s moved left.\n",mName);

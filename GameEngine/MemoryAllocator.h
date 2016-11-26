@@ -30,7 +30,7 @@ public:
 	char* mCurrentUsedHeapDescriptorAddress;
 
 	/*needs to be called once, or gets automatically called*/
-	void MemoryAllocated();
+	inline void MemoryAllocated();
 	
 	/*Request Memory for Heap*/
 	void* MemoryRequest(size_t memorySizeRequested);
@@ -45,7 +45,7 @@ public:
 	void* MemoryDeallocate(size_t memorySizeRequested);
 
 	/*get the Total Memory Size*/
-	size_t GetMemorySize() const;
+	inline size_t GetMemorySize() const;
 
 private:
 
@@ -64,9 +64,9 @@ private:
 	const char* mStartFreeHeapDescriptorListAddress;
 	const char* mStartUsedHeapDescriptorListAdress;
 
-	void SeperateMemory();
-	void WriteMemory_Free();
-	void UpdateHeapSize_Allocate(const size_t memorySizeRequested);
-	void UpdateHeapSize_Deallocate(const size_t memorySizeRequested);
+	inline void SeperateMemory();
+	inline void WriteMemory_Free();
+	inline void UpdateHeapSize_Allocate(const size_t memorySizeRequested);
+	inline void UpdateHeapSize_Deallocate(const size_t memorySizeRequested);
 };
 

@@ -1,8 +1,8 @@
 #pragma once
 
-void Input();
+inline void Input();
 void Generate();
-void InitializePlayer();
+inline void InitializePlayer();
 void Update();
 void CleanMemory();
 
@@ -60,7 +60,7 @@ int main() {
 	return 0;
 }
 
-void Input() {
+inline void Input() {
 	printf("Enter the number of Monsters\n");
 	scanf_s("%d", &numberOfMonsters);
 
@@ -76,7 +76,7 @@ void Generate() {
 	}
 }
 
-void InitializePlayer() {
+inline void InitializePlayer() {
 	player->InitializePlayer();
 }
 

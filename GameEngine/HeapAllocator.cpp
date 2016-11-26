@@ -2,7 +2,7 @@
 
 MemoryAllocator memoryAllocator = MemoryAllocator();
 Heap* heap = nullptr;
-void* HeapAllocator::AllocateMemory(size_t memorySize) {
+ void* HeapAllocator::AllocateMemory(size_t memorySize) {
 
 	printf("Inside AllocateMemory() in HeapAllocator.\n");
 	printf("The requested memory size is %Iu and TotalMemorySize is %Iu. \n", memorySize, memoryAllocator.mTotalMemorySize);
@@ -121,7 +121,7 @@ void HeapAllocator::PrintMemorySize() {
 	memoryAllocator.PrintMemorySize();
 }
 
-void HeapAllocator::PrintUsedHeapDescriptorList() {
+inline void HeapAllocator::PrintUsedHeapDescriptorList() {
 	int length = heapUsedDescriptorList.mCount;
 	for (int i = 0;i <= length;i++) {
 		HeapDescriptor* heapDescriptor = (HeapDescriptor*) heapUsedDescriptorList.GetElement(i);

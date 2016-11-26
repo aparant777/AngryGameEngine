@@ -25,7 +25,7 @@ MemoryAllocator::~MemoryAllocator() {
 }
 
 /*generate some default memory, if not called, this function gets automatically called when memory is requested*/
-void MemoryAllocator::MemoryAllocated() {
+inline void MemoryAllocator::MemoryAllocated() {
 	mIsMemoryAllocated = true;
 	mAllocatedAddress = static_cast<char*>(malloc(SAMPLE_MEMORY_SIZE_TOTAL));
 	/*give the current memory address as the newly generated address*/
@@ -35,7 +35,7 @@ void MemoryAllocator::MemoryAllocated() {
 }
 
 /*seperate addresses will be given for the Heap, Free and Used Lists*/
-void MemoryAllocator::SeperateMemory() {
+inline void MemoryAllocator::SeperateMemory() {
 	/*poiners bumped to their respective positions*/
 	mStartHeapAddress = mAllocatedAddress;
 	mStartFreeHeapDescriptorListAddress = mStartHeapAddress + SAMPLE_MEMORY_SIZE_FREEHEAPDESCRIPTOR_LIST;
@@ -48,7 +48,7 @@ void MemoryAllocator::SeperateMemory() {
 }
 
 /*Writing 'F' to memory indicating its Free*/
-void MemoryAllocator::WriteMemory_Free() {
+inline void MemoryAllocator::WriteMemory_Free() {
 	/*convert from char* to void*/
 	void* tempAllocatedAddress = mAllocatedAddress;	
 	memset(tempAllocatedAddress, static_cast<int>(FREE_MEMORY), SAMPLE_MEMORY_SIZE_TOTAL);
@@ -145,14 +145,14 @@ void* MemoryAllocator::MemoryDeallocate(size_t memorySizeRequested) {
 	}
 }
 
-size_t MemoryAllocator::GetMemorySize() const {
+inline size_t MemoryAllocator::GetMemorySize() const {
 	return mTotalMemorySize;
 }
 
-void MemoryAllocator::UpdateHeapSize_Allocate(const size_t memorySizeRequested) {
+inline void MemoryAllocator::UpdateHeapSize_Allocate(const size_t memorySizeRequested) {
 	mCurrentMemoryHeapSize -= memorySizeRequested;
 }
 
-void MemoryAllocator::UpdateHeapSize_Deallocate(const size_t memorySizeRequested) {
+inline void MemoryAllocator::UpdateHeapSize_Deallocate(const size_t memorySizeRequested) {
 	mCurrentMemoryHeapSize += memorySizeRequested;
 }

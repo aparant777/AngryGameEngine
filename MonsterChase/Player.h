@@ -9,8 +9,8 @@ public:
 	~CPlayer();
 
 	void InitializePlayer();
-	void DecideToMoveORQuit(const char choice);
-	void Move(const char choice);
+	inline void DecideToMoveORQuit(const char choice);
+	inline void Move(const char choice);
 
 	const char Input();
 

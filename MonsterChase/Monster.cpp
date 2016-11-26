@@ -53,19 +53,6 @@ void CMonster::EncounterAnotherMonster(CMonster* anotherMonster) {
 	}
 }
 
-/*Getter Functions*/
-char* CMonster::GetName() {
-	return mName;
-}
-
-float CMonster::GetPositionX() {
-	return mPosition.GetPositionX();
-}
-
-float CMonster::GetPositionY() {
-	return mPosition.GetPositionY();
-}
-
 /*Delete the memory generated and set its pointer to 0*/
 void CMonster::FreeMemory(CMonster* monster) {
 	delete monster;
