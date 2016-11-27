@@ -1,5 +1,6 @@
 #pragma once
 #include<cstring>
+#include"GameObject.h"
 #include"Vector3.h"
 
 class CPlayer
@@ -15,6 +16,7 @@ public:
 	const char Input();
 
 private:
+	
 	char mName[5];
 	Vector3 mPosition;
 };

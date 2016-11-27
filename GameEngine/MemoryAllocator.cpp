@@ -30,7 +30,7 @@ inline void MemoryAllocator::MemoryAllocated() {
 	mAllocatedAddress = static_cast<char*>(malloc(SAMPLE_MEMORY_SIZE_TOTAL));
 	/*give the current memory address as the newly generated address*/
 	mCurrentMemoryAddress = mAllocatedAddress;
-	
+	printf("mAllocatedAddress = %p.\n", (void*)&mAllocatedAddress);
 	SeperateMemory();
 }
 
@@ -56,12 +56,20 @@ inline void MemoryAllocator::WriteMemory_Free() {
 
 /*when user requests for memory*/
 void* MemoryAllocator::MemoryRequest(size_t memorySizeRequested) {
+
+	static int memoryCalledCount = 1;
+
 	/*check if memory has been allocated, if no then allocate*/
 	if (mIsMemoryAllocated) {
+		printf("mIsMemoryAllcoated = %b\n", mIsMemoryAllocated);
 		/*check if the first memory block is free*/
-		if (memchr(mCurrentMemoryAddress, static_cast<int>(FREE_MEMORY), sizeof(char)) != nullptr) {
+		//printf("mCurrentMemoryAddress = %p\n", (void*)&mCurrentMemoryAddress);
+		//int memcharacterRead = (int)memchr(mCurrentMemoryAddress, static_cast<int>(FREE_MEMORY), 1);
+		//printf("memCharacterRead = %p\n", (void*)&memcharacterRead);
+		if ((size_t)memchr(mCurrentMemoryAddress, static_cast<int>(FREE_MEMORY), 1) != USED_MEMORY ) {
+			
 			/*check if the entire block requested by user is free*/ 
-			if (memchr(mCurrentMemoryAddress, static_cast<int>(FREE_MEMORY), memorySizeRequested) != nullptr) {
+			if ((size_t)memchr(mCurrentMemoryAddress, static_cast<int>(FREE_MEMORY), memorySizeRequested) != USED_MEMORY) {
 				/*check if the heap can be allocated */
 				if (memorySizeRequested < mCurrentMemoryHeapSize) {
 					char* tempAddresss = mCurrentMemoryAddress;
@@ -75,14 +83,19 @@ void* MemoryAllocator::MemoryRequest(size_t memorySizeRequested) {
 					UpdateHeapSize_Allocate(memorySizeRequested);
 					/*update the totalMemorySize now*/
 					mTotalMemorySize -= memorySizeRequested;
+
+					memoryCalledCount++;
+					printf("\n Memory Called %d times\n", memoryCalledCount);
+
+
 					/*finally, send it to user*/
 					return tempAddresss;
 				}else{
-					printf("not enough memory to allocate. \n");
+					printf("not enough memory to allocate (first). \n");
 					return nullptr;
 				}
 			} else {
-				printf("not enough memory to allocate. \n");
+				printf("not enough memory to allocate (second). \n");
 				return nullptr;
 			}
 		} else {
@@ -97,6 +110,8 @@ void* MemoryAllocator::MemoryRequest(size_t memorySizeRequested) {
 		printf("Recalling the MemoryRequest function again for you. \n");
 		return MemoryRequest(memorySizeRequested);
 	}
+
+
 }
 
 void* MemoryAllocator::MemoryRequest_HeapDescriptor(size_t heapDescriptorMemorySize) {

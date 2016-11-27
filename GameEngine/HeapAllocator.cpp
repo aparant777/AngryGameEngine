@@ -1,7 +1,7 @@
 #include "HeapAllocator.h"
 
 MemoryAllocator memoryAllocator = MemoryAllocator();
-Heap* heap = nullptr;
+static Heap* heap = nullptr;
  void* HeapAllocator::AllocateMemory(size_t memorySize) {
 
 	printf("Inside AllocateMemory() in HeapAllocator.\n");

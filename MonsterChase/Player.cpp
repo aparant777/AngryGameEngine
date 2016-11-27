@@ -10,8 +10,11 @@ CPlayer::CPlayer() { }
 void CPlayer::InitializePlayer() {
 	printf("Enter the name of the player: ");
 	scanf_s("%s", mName, 100);
+
 	
 	mPosition = mPosition.zero;
+	
+
 
 	printf("\n");
 	printf("%s spawned at ", mName);

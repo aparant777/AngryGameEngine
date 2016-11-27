@@ -14,7 +14,8 @@ void CleanMemory();
 #include"HeapAllocator.h"
 #include"Monster.h"
 #include"Player.h"
-#include "Main.h"
+#include"Main.h"
+#include"GameObject.h"
 
 HeapAllocator heapallocator = HeapAllocator();
 CMonster* listOfMonsters;
@@ -22,6 +23,8 @@ CMonster monster;
 CPlayer* player;
 CPlayer* player1;
 CPlayer* player2;
+CPlayer* player3;
+CPlayer* player4;
 int numberOfMonsters;
 char choice = 'a';
 
@@ -30,22 +33,22 @@ int main() {
 	srand((unsigned int)time(0));	//set the seed rolling with time
 	
 	//heapallocator.PrintMemorySize();
-	
-	player = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
-	//heapallocator.PrintMemorySize();
-	
-	player1 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
 
-	player2 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
+	
+	//heapallocator.PrintMemorySize();
+
+
+	for (int i = 0;i < 51;i++) {
+		player = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
+	}
 
 	heapallocator.PrintMemorySize();
-	
+
 	//heapallocator.PrintMemorySize();
 	//int length = heapallocator.heapUsedDescriptorList.GetLength();
 	//printf("Length of linked list is %d.\n", length);
 	//heapallocator.heapUsedDescriptorList.DeleteLastNode();
 	//HeapDescriptor* heapDescriptor1 = (HeapDescriptor*)heapallocator.heapUsedDescriptorList.GetElement(1);
-	printf("Size of player class is %zu", sizeof(player));
 	heapallocator.DeallocateMemory(player);
 
 	if (player != nullptr) {
