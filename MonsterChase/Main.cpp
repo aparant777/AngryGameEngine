@@ -35,7 +35,7 @@ int main() {
 
 	player = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
 	
-
+	//player = new ;
 	heapallocator.PrintMemorySize();
 
 	//heapallocator.PrintMemorySize();

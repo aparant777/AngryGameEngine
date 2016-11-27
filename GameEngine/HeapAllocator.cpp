@@ -75,26 +75,49 @@ void HeapAllocator::DeallocateMemory(void* type) {
 }
 
 void * HeapAllocator::operator new(size_t memorySize) {
-	MemoryAllocator memoryAllocator = MemoryAllocator();
+	printf("Inside AllocateMemory() in HeapAllocator.\n");
+	printf("The requested memory size is %Iu and TotalMemorySize is %Iu. \n", memorySize, memoryAllocator.mTotalMemorySize);
+
 	/*check the memory requested is less than the total allocated memory size*/
 	if (memorySize < memoryAllocator.mTotalMemorySize) {
+
+		printf("Requested memory size is less than the total allocated memory.\n");
+
+		static int tempID = 1;
 		/*create a heap and heap descriptor*/
-		Heap* heap = (Heap*)memoryAllocator.MemoryRequest(sizeof(Heap));
+
+		heap = (Heap*)memoryAllocator.MemoryRequest(memorySize);
 		HeapDescriptor* heapDescriptor = (HeapDescriptor*)memoryAllocator.MemoryRequest_HeapDescriptor(sizeof(HeapDescriptor));
+		heapDescriptor->mID = tempID;
 
 		/*check if heap and heapDescriptor is not null*/
 		if (heap != nullptr && heapDescriptor != nullptr) {
 
-			/*put heapDescriptor in usedHeapDescritpors list*/
+			printf("Heap and Heap descriptor created successfully.\n");
 
 			heap->mSize = memorySize;
 			heap->mAddress_Self = (void*)heap;
 
 			heapDescriptor->mAddress_Self = (void*)heapDescriptor;
-			//heapDescriptor->mAddress_Heap = (Heap*)heap->mAddress_Self;
-			
-			//heapDescriptorList = (LinkedList<HeapDescriptor>*) memoryAllocator.mCurrentFreeHeapDescriptorAddress;
+
+			heapDescriptor->mHeap = heap;
+			heapDescriptor->mID = tempID;
+			heapDescriptor->Print();
+			heapDescriptor->GetHeapSize();
+
+			//Node<HeapDescriptor*>* node = (void*)(memoryAllocator.mCurrentMemoryUsedHeapDescriptorSize);
+			//node->data = heapDescriptor;
+
+			/*put heapDescriptor in the usedHeapDescritpors list*/
+			//heapUsedDescriptorList.AddNode((Node<HeapDescriptor*>* )(node));
+
+			/*increment the tempID*/
+			printf("TempID value is %d.\n", tempID);
+			tempID++;
+
+			printf("\n\n\n");
 			return heap->mAddress_Self;
+
 		}
 		else {
 			if (heap == nullptr) {
