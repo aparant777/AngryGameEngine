@@ -21,10 +21,6 @@ HeapAllocator heapallocator = HeapAllocator();
 CMonster* listOfMonsters;
 CMonster monster;
 CPlayer* player;
-CPlayer* player1;
-CPlayer* player2;
-CPlayer* player3;
-CPlayer* player4;
 int numberOfMonsters;
 char choice = 'a';
 
@@ -37,10 +33,8 @@ int main() {
 	
 	//heapallocator.PrintMemorySize();
 
-
-	for (int i = 0;i < 51;i++) {
-		player = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
-	}
+	player = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
+	
 
 	heapallocator.PrintMemorySize();
 
