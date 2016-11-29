@@ -38,7 +38,7 @@ static Heap* heap = nullptr;
 			//node->data = heapDescriptor;
 
 			/*put heapDescriptor in the usedHeapDescritpors list*/
-			//heapUsedDescriptorList.AddNode((Node<HeapDescriptor*>* )(node));
+			heapUsedDescriptorList.AddNode(heapDescriptor);
 
 			/*increment the tempID*/
 			printf("TempID value is %d.\n", tempID);
@@ -109,6 +109,7 @@ void * HeapAllocator::operator new(size_t memorySize) {
 			//node->data = heapDescriptor;
 
 			/*put heapDescriptor in the usedHeapDescritpors list*/
+			
 			//heapUsedDescriptorList.AddNode((Node<HeapDescriptor*>* )(node));
 
 			/*increment the tempID*/

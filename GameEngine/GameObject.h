@@ -5,7 +5,7 @@ class GameObject {
 public:
 	
 	inline Vector3 GetPosition() const { return mPosition; }
-	void SetPosition(Vector3& newPosition);
+	void SetPosition(Vector3& newPosition) ;
 	inline bool IsActive() const { return mIsActive; }
 	void SetActive(bool isItActive);
 	//void SetName(char newName[5]);
@@ -16,4 +16,3 @@ private:
 	static const int mID;
 	bool mIsActive;
 };
-

@@ -61,13 +61,9 @@ void* MemoryAllocator::MemoryRequest(size_t memorySizeRequested) {
 
 	/*check if memory has been allocated, if no then allocate*/
 	if (mIsMemoryAllocated) {
-		printf("mIsMemoryAllcoated = %b\n", mIsMemoryAllocated);
+		printf("mIsMemoryAllcoated = %d\n", mIsMemoryAllocated);
 		/*check if the first memory block is free*/
-		//printf("mCurrentMemoryAddress = %p\n", (void*)&mCurrentMemoryAddress);
-		//int memcharacterRead = (int)memchr(mCurrentMemoryAddress, static_cast<int>(FREE_MEMORY), 1);
-		//printf("memCharacterRead = %p\n", (void*)&memcharacterRead);
-		if ((size_t)memchr(mCurrentMemoryAddress, static_cast<int>(FREE_MEMORY), 1) != USED_MEMORY ) {
-			
+		if ((size_t)memchr(mCurrentMemoryAddress, static_cast<int>(FREE_MEMORY), 1) != USED_MEMORY ) {			
 			/*check if the entire block requested by user is free*/ 
 			if ((size_t)memchr(mCurrentMemoryAddress, static_cast<int>(FREE_MEMORY), memorySizeRequested) != USED_MEMORY) {
 				/*check if the heap can be allocated */
@@ -86,7 +82,6 @@ void* MemoryAllocator::MemoryRequest(size_t memorySizeRequested) {
 
 					memoryCalledCount++;
 					printf("\n Memory Called %d times\n", memoryCalledCount);
-
 
 					/*finally, send it to user*/
 					return tempAddresss;
@@ -110,8 +105,6 @@ void* MemoryAllocator::MemoryRequest(size_t memorySizeRequested) {
 		printf("Recalling the MemoryRequest function again for you. \n");
 		return MemoryRequest(memorySizeRequested);
 	}
-
-
 }
 
 void* MemoryAllocator::MemoryRequest_HeapDescriptor(size_t heapDescriptorMemorySize) {

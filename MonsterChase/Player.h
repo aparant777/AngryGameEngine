@@ -8,7 +8,7 @@ class CPlayer
 public:
 	CPlayer();
 	~CPlayer();
-
+	GameObject goPlayer;
 	void InitializePlayer();
 	inline void DecideToMoveORQuit(const char choice);
 	inline void Move(const char choice);
