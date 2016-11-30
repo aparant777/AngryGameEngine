@@ -33,9 +33,6 @@ static Heap* heap = nullptr;
 			heapDescriptor->mID = tempID;
 			heapDescriptor->Print();
 			heapDescriptor->GetHeapSize();
-			
-			//Node<HeapDescriptor*>* node = (void*)(memoryAllocator.mCurrentMemoryUsedHeapDescriptorSize);
-			//node->data = heapDescriptor;
 
 			/*put heapDescriptor in the usedHeapDescritpors list*/
 			heapUsedDescriptorList.AddNode(heapDescriptor);

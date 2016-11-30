@@ -51,6 +51,13 @@ int main() {
 	//HeapDescriptor* heapDescriptor1 = (HeapDescriptor*)heapallocator.heapUsedDescriptorList.GetElement(1);
 	heapallocator.DeallocateMemory(player);
 	heapallocator.heapUsedDescriptorList.PrintLinkedList();
+	printf("Length of linked list is %d.\n", heapallocator.heapUsedDescriptorList.GetLength());
+	heapallocator.heapUsedDescriptorList.DeleteFirstNode();
+	heapallocator.heapUsedDescriptorList.PrintLinkedList();
+	heapallocator.heapUsedDescriptorList.DeleteFirstNode();
+	heapallocator.heapUsedDescriptorList.PrintLinkedList();
+	printf("Length of linked list is %d.\n", heapallocator.heapUsedDescriptorList.GetLength());
+
 
 	if (player != nullptr) {
 		Input();

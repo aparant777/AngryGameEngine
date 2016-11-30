@@ -1,10 +1,8 @@
 #pragma once
-#include<iostream>
 /*Linked List implementation*/
 /*This is a template class hence all the function implementations will reside in this class*/
 template<class T>
 struct Node {
-	//T data;
 	Node<T>* next;
 	Node<T>* previous;
 	T data;
@@ -23,8 +21,9 @@ public:
 	int mCount;
 
 	void AddNode(T data);
-	void DeleteNode(Node<T>* node);
+	void DeleteNode(T data);
 	void DeleteLastNode();
+	void DeleteFirstNode();
 	void PrintLinkedList();
 	
 	int GetLength();
@@ -50,40 +49,25 @@ inline LinkedList<T>::~LinkedList()
 
 template<typename T>
 inline void LinkedList<T>::AddNode(T nodeToBeAdded) {
-	/*if list is empty, then make the added node as head and tail*/
-
 	Node<T>* newNode = new Node<T>;
 	newNode->data = nodeToBeAdded;
-
+	/*if the linked list is empty*/
 	if (mHead == nullptr) {
 		mHead = newNode;
-	}
-	else {
+		printf("Element added to the list successfully.\n");
+	} else {
 		newNode->next = mHead;
 		mHead = newNode;
+		printf("Element added to the list successfully.\n");
 	}
+	/*increment the counter*/
 	mCount++;
 }
-	/*
-	if (IsEmpty()) {
-		mHead = node;
-		mTail = mHead;
-	}
-	else {
-		/*Node<T>* currentNode = mHead;
-		mHead = node;
-		mHead->next = currentNode;
-		currentNode->previous = mHead;
-		currentNode->next = nullptr;
-		
-		mTail->next = node;
-		mTail = mTail->next;
-	}
-	;*/
 
 template<typename T>
-inline void LinkedList<T>::DeleteNode(Node<T>* node) {
+inline void LinkedList<T>::DeleteNode(T nodeToBeDeleted) {
 	if (IsEmpty()) {
+		printf("Linked List is empty.\n Returning \n");
 		return;
 	}
 	else {
@@ -119,15 +103,34 @@ inline void LinkedList<T>::DeleteLastNode() {
 }
 
 template<typename T>
+inline void LinkedList<T>::DeleteFirstNode() {
+	if (IsEmpty()) {
+		printf("List is empty. \n");
+		return;
+	} else {
+		Node<T>* nodeToBeDeleted;
+		/*take the reference of the first node*/	
+		nodeToBeDeleted = mHead;
+		/*the first node's next element is the new first node*/
+		mHead = mHead->next;
+		/*delete the node*/
+		delete(nodeToBeDeleted);
+		mCount--;
+		printf("Node deleted successfully.\n");
+	}
+}
+
+template<typename T>
 inline void LinkedList<T>::PrintLinkedList() {
 	if (IsEmpty()) {
 		printf("List is empty. \n");
+		return;
 	} else {
 		int count = mCount;
 		Node<T>* currentNode = mHead;
-		while (count > 1) {
-			printf("Executing..\n");
-			std::cout << "currentNode->data = \n" << currentNode->data->mID;
+		printf("Printing all elements of the list..\n");
+		while (count >= 1) {
+			printf("currentNode->data->mID = %d\n", currentNode->data->mID);
 			if (currentNode->next != nullptr) {
 				currentNode = currentNode->next;
 				count--;
@@ -140,16 +143,9 @@ template<typename T>
 inline int LinkedList<T>::GetLength() {
 	int length = 0;
 	if (IsEmpty()) {
-		return length;
-	}
-	else {
-		Node<T>* currentNode = mHead;
-		while (currentNode->next != nullptr) {
-			currentNode = currentNode->next;
-			length++;
-		}
-		return length;
-	}
+		printf("List is empty.\n");	
+	} 
+	return mCount;
 }
 
 template<typename T>
@@ -197,8 +193,6 @@ inline Node<T>* LinkedList<T>::GetElement(int number) {
 	}
 }
 #pragma warning(pop)
-
-
 
 /*this is an iterator function. Run this in a for loop*/
 template<typename T>
