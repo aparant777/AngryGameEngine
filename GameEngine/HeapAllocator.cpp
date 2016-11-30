@@ -64,9 +64,17 @@ static Heap* heap = nullptr;
 }
 
 void HeapAllocator::DeallocateMemory(void* type) {
-	/*get the size of the type*/
+	/*get the size of the type (special case: HeapDescriptor)*/
 	size_t sizeToBeDeleted = sizeof(type);
 	printf("Size of type is %zu.\n", sizeToBeDeleted);
+	/*get the specific heapDestricptor*/
+
+	/*get the heap memory address respective to that heapdescriptor*/	
+
+	/*reset the data of heap by writing FREE_MEMORY*/
+
+	/*reset the data of heap descriptor*/	
+
 	/*add the descriptor to the free descriptor list*/
 	//heapFreeDescriptorList.AddNode((void*));
 }

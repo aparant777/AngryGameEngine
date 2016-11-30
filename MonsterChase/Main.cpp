@@ -40,8 +40,7 @@ int main() {
 	player1 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
 	player2 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
 	player3 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
-	
-	//player = new ;
+
 	heapallocator.PrintMemorySize();
 
 	//heapallocator.PrintMemorySize();
