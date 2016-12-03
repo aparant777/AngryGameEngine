@@ -26,7 +26,7 @@ static Heap* heap = nullptr;
 
 			heap->mSize = memorySize;
 			heap->mAddress_Self = (void*)heap;
-
+			//heap->mHeapDescriptor = heapDescriptor;
 			heapDescriptor->mAddress_Self = (void*)heapDescriptor;
 
 			heapDescriptor->mHeap = heap;
@@ -63,12 +63,20 @@ static Heap* heap = nullptr;
 	}
 }
 
-void HeapAllocator::DeallocateMemory(void* type) {
-	/*get the size of the type (special case: HeapDescriptor)*/
-	size_t sizeToBeDeleted = sizeof(type);
-	printf("Size of type is %zu.\n", sizeToBeDeleted);
-	/*get the specific heapDestricptor*/
+void HeapAllocator::DeallocateMemory(char* memoryAddress) {
+	printf("memoryAddress received at the Heap Allocator is %d.\n", memoryAddress);
 
+	/*get the size of the type (special case: HeapDescriptor)*/
+	//if(memoryAddress == )
+	size_t sizeToBeDeleted = 20;
+	printf("Size of type is %zu.\n", sizeToBeDeleted);
+
+	
+	printf("values coming are %d. \n", heapUsedDescriptorList.DetailElements(2));
+
+	/*get the specific heapDestricptor*/
+		/*traverse the specific list to obtain the same address as that of the 'memoryAddress'*/
+		//heapUsedDescriptorList
 	/*get the heap memory address respective to that heapdescriptor*/	
 
 	/*reset the data of heap by writing FREE_MEMORY*/
@@ -77,6 +85,9 @@ void HeapAllocator::DeallocateMemory(void* type) {
 
 	/*add the descriptor to the free descriptor list*/
 	//heapFreeDescriptorList.AddNode((void*));
+
+
+	memoryAllocator.MemoryDeallocate(sizeToBeDeleted, (char*)memoryAddress);
 }
 
 void * HeapAllocator::operator new(size_t memorySize) {
@@ -105,7 +116,7 @@ void * HeapAllocator::operator new(size_t memorySize) {
 
 			heapDescriptor->mAddress_Self = (void*)heapDescriptor;
 
-			heapDescriptor->mHeap = heap;
+			//heapDescriptor->mHeap = heap;
 			heapDescriptor->mID = tempID;
 			heapDescriptor->Print();
 			heapDescriptor->GetHeapSize();
@@ -154,7 +165,7 @@ inline void HeapAllocator::PrintUsedHeapDescriptorList() {
 	int length = heapUsedDescriptorList.mCount;
 	for (int i = 0;i <= length;i++) {
 		HeapDescriptor* heapDescriptor = (HeapDescriptor*) heapUsedDescriptorList.GetElement(i);
-		printf("Heapdescriptor with ID is %d and size %zu.\n", heapDescriptor->mID, heapDescriptor->mHeap->mSize);
+		//printf("Heapdescriptor with ID is %d and size %zu.\n", heapDescriptor->mID, heapDescriptor->mHeap->mSize);
 	}
 	printf("length is ------> %d.\n", length);
 }

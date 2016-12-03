@@ -42,7 +42,7 @@ public:
 	void PrintMemorySize() const;
 
 	/*Memory delete*/
-	void* MemoryDeallocate(size_t memorySizeRequested);
+	void* MemoryDeallocate(size_t memorySizeRequested, char* memoryAddress);
 
 	/*get the Total Memory Size*/
 	inline size_t GetMemorySize() const;

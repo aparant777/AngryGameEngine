@@ -127,10 +127,11 @@ void MemoryAllocator::PrintMemorySize() const {
 	printf("Total Memory availabe is %zu. \n", mCurrentMemoryHeapSize);
 }
 
-void* MemoryAllocator::MemoryDeallocate(size_t memorySizeRequested) {
+void* MemoryAllocator::MemoryDeallocate(size_t memorySizeRequested, char* memoryAddress) {
 	if (mIsMemoryAllocated) {
+		printf("char* memoryAddress = %d. \n", memoryAddress);
 		/*only perform this operation if the memory set be deleted is a used memory*/
-		if (memchr(mCurrentMemoryAddress, static_cast<int>(USED_MEMORY), sizeof(char)) != nullptr) {
+		if ((size_t)memchr(memoryAddress, static_cast<int>(USED_MEMORY), sizeof(char)) != FREE_MEMORY) {
 			//char* tempAddresss = mCurrentMemoryAddress;
 			void* tempMCurrentMemoryAddress = mCurrentMemoryAddress;
 			/*write to the memory that is now being used*/
@@ -163,4 +164,5 @@ inline void MemoryAllocator::UpdateHeapSize_Allocate(const size_t memorySizeRequ
 
 inline void MemoryAllocator::UpdateHeapSize_Deallocate(const size_t memorySizeRequested) {
 	mCurrentMemoryHeapSize += memorySizeRequested;
+	printf("mCurrentMemoryHeapSize = %d. \n", mCurrentMemoryHeapSize);
 }

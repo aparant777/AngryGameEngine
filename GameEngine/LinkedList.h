@@ -32,7 +32,9 @@ public:
 	Node<T>* GetFirst();
 	Node<T>* GetLast();
 	Node<T>* GetElement(int number);
-	Node<T>* DetailElement(int number);
+	size_t DetailElements(int iterator);
+	//Node<T>* DetailElement(int number);
+	//T* GetElements(int number);
 
 private:
 	
@@ -130,7 +132,9 @@ inline void LinkedList<T>::PrintLinkedList() {
 		Node<T>* currentNode = mHead;
 		printf("Printing all elements of the list..\n");
 		while (count >= 1) {
-			printf("currentNode->data->mID = %d\n", currentNode->data->mID);
+			printf("currentNode->data->mID = %d ", currentNode->data->mID);
+			//printf("address is %d. \n", currentNode->data->mA);
+
 			if (currentNode->next != nullptr) {
 				currentNode = currentNode->next;
 				count--;
@@ -196,21 +200,20 @@ inline Node<T>* LinkedList<T>::GetElement(int number) {
 
 /*this is an iterator function. Run this in a for loop*/
 template<typename T>
-inline Node<T>* LinkedList<T>::DetailElement(int iterator) {
+inline size_t LinkedList<T>::DetailElements(int iterator) {
 	if (IsEmpty()) {
-		return nullptr;
-	} else {
+		printf("List is empty. In LinkedList::DetailElements().\n");
+		return 0;
+	}
+	else {
 		int length = GetLength();
 		Node<T>* currentNode = mHead;
-		while (length < 1) {
-			if (length == iterator) {
-				return currentNode;
-			}
-			currentNode = currentNode->next;
-			length--;
-		}
+		printf("Nodes->HeapDescriptor's ID is %d \n", currentNode->data->mHeap->mSize);
+		//return currentNode->data->mID;
+		return currentNode->data->mHeap->mSize;
 	}
 }
+
 
 
 		/*

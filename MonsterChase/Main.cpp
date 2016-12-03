@@ -38,25 +38,39 @@ int main() {
 
 	player = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
 	player1 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
-	player2 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
+	player2 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer))); 
 	player3 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
 
 	heapallocator.PrintMemorySize();
+
+	/*
+	player->
+	*/
 
 	//heapallocator.PrintMemorySize();
 	//int length = heapallocator.heapUsedDescriptorList.GetLength();
 	//printf("Length of linked list is %d.\n", length);
 	//heapallocator.heapUsedDescriptorList.DeleteLastNode();
 	//HeapDescriptor* heapDescriptor1 = (HeapDescriptor*)heapallocator.heapUsedDescriptorList.GetElement(1);
-	heapallocator.DeallocateMemory(player);
-	heapallocator.heapUsedDescriptorList.PrintLinkedList();
-	printf("Length of linked list is %d.\n", heapallocator.heapUsedDescriptorList.GetLength());
-	heapallocator.heapUsedDescriptorList.DeleteFirstNode();
-	heapallocator.heapUsedDescriptorList.PrintLinkedList();
-	heapallocator.heapUsedDescriptorList.DeleteFirstNode();
-	heapallocator.heapUsedDescriptorList.PrintLinkedList();
-	printf("Length of linked list is %d.\n", heapallocator.heapUsedDescriptorList.GetLength());
+	
+	//send the address to the heapallocator for 
 
+	//heapallocator.DeallocateMemory(player);
+	
+	//heapallocator.heapUsedDescriptorList.PrintLinkedList();
+	//printf("Length of linked list is %d.\n", heapallocator.heapUsedDescriptorList.GetLength());
+	//heapallocator.heapUsedDescriptorList.DeleteFirstNode();
+	//heapallocator.heapUsedDescriptorList.PrintLinkedList();
+	//heapallocator.heapUsedDescriptorList.DeleteFirstNode();
+	heapallocator.heapUsedDescriptorList.PrintLinkedList();
+	//heapallocator.GetHeapSize();
+
+	printf("&player = %u. \n", &player);
+	heapallocator.DeallocateMemory((char*)&player);
+
+	//printf("Length of linked list is %d.\n", heapallocator.heapUsedDescriptorList.GetLength());
+
+	printf("\n\n\n");
 
 	if (player != nullptr) {
 		Input();
@@ -65,8 +79,7 @@ int main() {
 		Update();
 		CleanMemory();
 	}
-	
-	//system("pause");
+
 	return 0;
 }
 

@@ -3,6 +3,7 @@
 #include"MemoryAllocator.h"
 #include<stdio.h>
 
+
 struct Heap {
 	void* mAddress_Self;
 	size_t mSize;
@@ -22,6 +23,9 @@ struct HeapDescriptor {
 	}
 };
 
+
+
+
 class HeapAllocator {
 public:
 	
@@ -32,7 +36,7 @@ public:
 	void* AllocateMemory(size_t memorySize);
 
 	/*Deallocate Memory*/
-	void DeallocateMemory(void* type);
+	void DeallocateMemory(char* memoryAddress);
 
 	/*overloaded 'new' operator: DO NOT USE*/
 	void* operator new(size_t memorySize);	
@@ -69,3 +73,15 @@ public:
 //move the heap descriptor back to freeHeapdescriptors list
 
 //-------------------
+
+
+/*player address is present
+
+player address  == heap address
+
+match the heap address with each address of the heap in heap descriptor which is in the used list
+
+once the address is matched, get the heapSize from the heap in the deap descriptor. 
+
+delete the memory elements from the start of address upto its size
+*/
