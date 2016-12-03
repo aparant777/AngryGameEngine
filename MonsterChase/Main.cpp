@@ -33,15 +33,17 @@ int main() {
 	
 	//heapallocator.PrintMemorySize();
 
-	
+	char* a = (char*)heapallocator.AllocateMemory(100);
 	//heapallocator.PrintMemorySize();
+	heapallocator.DeallocateMemory(a);
+
 
 	player = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
 	player1 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
 	player2 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer))); 
 	player3 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
 
-	heapallocator.PrintMemorySize();
+	//heapallocator.PrintMemorySize();
 
 	/*
 	player->
@@ -62,11 +64,12 @@ int main() {
 	//heapallocator.heapUsedDescriptorList.DeleteFirstNode();
 	//heapallocator.heapUsedDescriptorList.PrintLinkedList();
 	//heapallocator.heapUsedDescriptorList.DeleteFirstNode();
-	heapallocator.heapUsedDescriptorList.PrintLinkedList();
+	
 	//heapallocator.GetHeapSize();
+	//heapallocator.heapUsedDescriptorList.PrintLinkedList();
 
 	printf("&player = %u. \n", &player);
-	heapallocator.DeallocateMemory((char*)&player);
+	heapallocator.DeallocateMemory(player);
 
 	//printf("Length of linked list is %d.\n", heapallocator.heapUsedDescriptorList.GetLength());
 

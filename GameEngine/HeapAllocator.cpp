@@ -63,16 +63,30 @@ static Heap* heap = nullptr;
 	}
 }
 
-void HeapAllocator::DeallocateMemory(char* memoryAddress) {
-	printf("memoryAddress received at the Heap Allocator is %d.\n", memoryAddress);
+
+void HeapAllocator::DeallocateMemory(void* memoryAddress) {
+	//printf("memoryAddress received at the Heap Allocator is %d.\n", memoryAddress);
 
 	/*get the size of the type (special case: HeapDescriptor)*/
 	//if(memoryAddress == )
 	size_t sizeToBeDeleted = 20;
-	printf("Size of type is %zu.\n", sizeToBeDeleted);
+	//printf("Size of type is %zu.\n", sizeToBeDeleted);
 
+	printf("memory address incoming is %d.\n", memoryAddress);
+
+	for (int i = 0;i < heapUsedDescriptorList.GetLength();i++) {
+		printf("memory address received through linked list is %d.\n", heapUsedDescriptorList.GetNodeAddress(i+1));
+	}
+
+	char* receivedAddress = heapUsedDescriptorList.GetNodeAddress(6);
+	if ((char*)memoryAddress == receivedAddress) {
+		printf("viola !!");
+
+	}
+
+	//printf("memory address received through linked list is %d.\n", heapUsedDescriptorList.GetNodeAddress(4));
 	
-	printf("values coming are %d. \n", heapUsedDescriptorList.DetailElements(2));
+	//printf("values coming are %d. \n", heapUsedDescriptorList.DetailElements(2));
 
 	/*get the specific heapDestricptor*/
 		/*traverse the specific list to obtain the same address as that of the 'memoryAddress'*/

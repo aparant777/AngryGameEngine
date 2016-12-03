@@ -129,7 +129,7 @@ void MemoryAllocator::PrintMemorySize() const {
 
 void* MemoryAllocator::MemoryDeallocate(size_t memorySizeRequested, char* memoryAddress) {
 	if (mIsMemoryAllocated) {
-		printf("char* memoryAddress = %d. \n", memoryAddress);
+		//printf("char* memoryAddress = %d. \n", memoryAddress);
 		/*only perform this operation if the memory set be deleted is a used memory*/
 		if ((size_t)memchr(memoryAddress, static_cast<int>(USED_MEMORY), sizeof(char)) != FREE_MEMORY) {
 			//char* tempAddresss = mCurrentMemoryAddress;
@@ -141,8 +141,8 @@ void* MemoryAllocator::MemoryDeallocate(size_t memorySizeRequested, char* memory
 			/*update the current heap size*/
 			UpdateHeapSize_Deallocate(memorySizeRequested);
 			/*finally, send it to user*/
-			return nullptr;
 			printf("Memory freed.\n");
+			return nullptr;
 		}
 		else {
 			printf("Memory is already free. No need to delete");

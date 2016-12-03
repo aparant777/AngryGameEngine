@@ -36,7 +36,7 @@ public:
 	void* AllocateMemory(size_t memorySize);
 
 	/*Deallocate Memory*/
-	void DeallocateMemory(char* memoryAddress);
+	void DeallocateMemory(void* memoryAddress);
 
 	/*overloaded 'new' operator: DO NOT USE*/
 	void* operator new(size_t memorySize);	

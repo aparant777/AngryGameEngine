@@ -33,6 +33,7 @@ public:
 	Node<T>* GetLast();
 	Node<T>* GetElement(int number);
 	size_t DetailElements(int iterator);
+	char* GetNodeAddress(int iterator);
 	//Node<T>* DetailElement(int number);
 	//T* GetElements(int number);
 
@@ -189,10 +190,8 @@ inline Node<T>* LinkedList<T>::GetElement(int number) {
 				return currentNode;
 				currentNode = currentNode->next;
 			}
-			
 			//printf("Requested element not found. \n");
-			//return nullptr;
-			
+			//return nullptr;	
 		}
 	}
 }
@@ -214,12 +213,34 @@ inline size_t LinkedList<T>::DetailElements(int iterator) {
 	}
 }
 
+template<typename T>
+inline char * LinkedList<T>::GetNodeAddress(int iterator) {
+	if (IsEmpty()) {
+		printf("List is empty. In LinkedList::DetailElements().\n");
+		return nullptr;
+	}
+	else {
+		int length = GetLength();
+		Node<T>* currentNode = mHead;
+		length = 0;
+		while (length >= 1 && length <= GetLength()) {
+			currentNode = currentNode->next;
+			if (iterator == length) {
+				break;
+			}
+			length++;
+		}
+
+		printf("Length of the linked list is %d. \n\n",length);
+		//printf("Nodes->HeapDescriptor's ID is %d \n", currentNode->data->mHeap->mSize);
+		//return currentNode->data->mID;
+		return (char*)currentNode->data->mHeap->mAddress_Self;
+	}
+}
 
 
-		/*
-		
-		
-		#pragma once
+/*	
+#pragma once
 
 /*Linked List implementation
 /*This is a template class hence all the function implementations will reside in this class
