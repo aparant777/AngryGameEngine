@@ -230,11 +230,19 @@ inline bool LinkedList<T>::IsEmpty() {
 
 template<typename T>
 inline Node<T>* LinkedList<T>::GetFirst() {
+	if (IsEmpty()) {
+		printf("List is empty.\n");
+		return nullptr;
+	}
 	return mHead;
 }
 
 template<typename T>
 inline Node<T>* LinkedList<T>::GetLast() {
+	if (IsEmpty()) {
+		printf("List is empty.\n");
+		return nullptr;
+	}
 	return mTail;
 }
 
@@ -278,6 +286,7 @@ inline size_t LinkedList<T>::DetailElements(int iterator) {
 	}
 }
 
+/*this is an iterator function. Run this in a for loop*/
 template<typename T>
 inline char * LinkedList<T>::GetNodeAddress(int iterator) {
 	if (IsEmpty()) {
