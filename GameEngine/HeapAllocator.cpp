@@ -75,13 +75,12 @@ void HeapAllocator::DeallocateMemory(void* memoryAddress) {
 	printf("memory address incoming is %d.\n", memoryAddress);
 
 	for (int i = 0;i < heapUsedDescriptorList.GetLength();i++) {
-		printf("memory address received through linked list is %d.\n", heapUsedDescriptorList.GetNodeAddress(i+1));
+		//printf("memory address received through linked list is %d.\n", heapUsedDescriptorList.GetNodeAddress(i+1));
 	}
 
-	char* receivedAddress = heapUsedDescriptorList.GetNodeAddress(6);
+	char* receivedAddress = heapUsedDescriptorList.GetNodeAddress(2);
 	if ((char*)memoryAddress == receivedAddress) {
 		printf("viola !!");
-
 	}
 
 	//printf("memory address received through linked list is %d.\n", heapUsedDescriptorList.GetNodeAddress(4));
@@ -99,7 +98,6 @@ void HeapAllocator::DeallocateMemory(void* memoryAddress) {
 
 	/*add the descriptor to the free descriptor list*/
 	//heapFreeDescriptorList.AddNode((void*));
-
 
 	memoryAllocator.MemoryDeallocate(sizeToBeDeleted, (char*)memoryAddress);
 }

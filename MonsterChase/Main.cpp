@@ -33,15 +33,18 @@ int main() {
 	
 	//heapallocator.PrintMemorySize();
 
-	char* a = (char*)heapallocator.AllocateMemory(100);
-	//heapallocator.PrintMemorySize();
+	char* a = (char*)heapallocator.AllocateMemory(20);
 	heapallocator.DeallocateMemory(a);
+	char* c = (char*)heapallocator.AllocateMemory(20);
+	heapallocator.DeallocateMemory(a);
+
+	printf("------------------------------------------------------------------------\n");
 
 
 	player = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
-	player1 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
+	/*player1 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
 	player2 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer))); 
-	player3 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
+	player3 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));*/
 
 	//heapallocator.PrintMemorySize();
 

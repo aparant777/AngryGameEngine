@@ -22,6 +22,7 @@ public:
 
 	void AddNode(T data);
 	void DeleteNode(T data);
+	bool DeleteNode(Node<T>* node);
 	void DeleteLastNode();
 	void DeleteFirstNode();
 	void PrintLinkedList();
@@ -94,6 +95,49 @@ inline void LinkedList<T>::DeleteNode(T nodeToBeDeleted) {
 }
 
 template<typename T>
+inline bool LinkedList<T>::DeleteNode(Node<T>* node) {
+	if (IsEmpty()) {
+		printf("Linked List is empty.\n Returning \n");
+		return false;
+	} else {
+		/*if the node to be deleted is the first one*/
+		if (node == mHead) {
+			mHead = node->next;
+			delete(node);
+			node = 0;
+			printf("node deleted successfully.\n");
+			mCount--;
+			return true;
+		}
+		else {
+			Node<T>* currentNode = mHead;
+			Node<T>* previousNode = currentNode;
+
+			while (currentNode->next != nullptr) {
+				if (currentNode->next == node) {
+					//if the node to be deleted is not the last node, then reconnect the connection
+					if (node->next != nullptr) {
+						previousNode = currentNode;
+						currentNode = node->next;
+					}
+					//else just delete
+					delete(node);
+					node = 0;
+					printf("node deleted successfully.\n");
+					mCount--;
+					return true;
+				}
+				else {
+					previousNode = currentNode;
+					currentNode = previousNode->next;
+				}
+			}
+			return false;
+		}
+	}
+}
+
+template<typename T>
 inline void LinkedList<T>::DeleteLastNode() {
 	if (IsEmpty()) {
 		return;
@@ -122,6 +166,7 @@ inline void LinkedList<T>::DeleteFirstNode() {
 		printf("Node deleted successfully.\n");
 	}
 }
+
 
 template<typename T>
 inline void LinkedList<T>::PrintLinkedList() {
@@ -222,19 +267,22 @@ inline char * LinkedList<T>::GetNodeAddress(int iterator) {
 	else {
 		int length = GetLength();
 		Node<T>* currentNode = mHead;
-		length = 0;
-		while (length >= 1 && length <= GetLength()) {
-			currentNode = currentNode->next;
-			if (iterator == length) {
+		int currentNodeNumber = 1;
+		length = GetLength();
+		while (currentNodeNumber <= length) {
+			if (iterator == currentNodeNumber) {
+				return (char*)currentNode->data->mHeap->mAddress_Self;
 				break;
 			}
-			length++;
+			currentNodeNumber++;
+			currentNode = currentNode->next;
 		}
-
-		printf("Length of the linked list is %d. \n\n",length);
+		printf("element not found of the specific iterator.\n");
+		return nullptr;
+		//printf("Length of the linked list is %d. \n\n",length);
 		//printf("Nodes->HeapDescriptor's ID is %d \n", currentNode->data->mHeap->mSize);
 		//return currentNode->data->mID;
-		return (char*)currentNode->data->mHeap->mAddress_Self;
+		
 	}
 }
 

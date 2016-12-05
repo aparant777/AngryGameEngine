@@ -57,7 +57,7 @@ inline void MemoryAllocator::WriteMemory_Free() {
 /*when user requests for memory*/
 void* MemoryAllocator::MemoryRequest(size_t memorySizeRequested) {
 
-	static int memoryCalledCount = 1;
+	static int memoryCalledCount = 0;
 
 	/*check if memory has been allocated, if no then allocate*/
 	if (mIsMemoryAllocated) {
@@ -81,7 +81,7 @@ void* MemoryAllocator::MemoryRequest(size_t memorySizeRequested) {
 					mTotalMemorySize -= memorySizeRequested;
 
 					memoryCalledCount++;
-					printf("\n Memory Called %d times\n", memoryCalledCount);
+					printf("\n Memory Allocator called %d times\n", memoryCalledCount);
 
 					/*finally, send it to user*/
 					return tempAddresss;
@@ -165,4 +165,6 @@ inline void MemoryAllocator::UpdateHeapSize_Allocate(const size_t memorySizeRequ
 inline void MemoryAllocator::UpdateHeapSize_Deallocate(const size_t memorySizeRequested) {
 	mCurrentMemoryHeapSize += memorySizeRequested;
 	printf("mCurrentMemoryHeapSize = %d. \n", mCurrentMemoryHeapSize);
+	mTotalMemorySize += memorySizeRequested;
+	printf("mTotalMemorySize = %d. \n", mTotalMemorySize);
 }
