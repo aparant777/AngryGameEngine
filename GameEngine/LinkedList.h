@@ -21,7 +21,7 @@ public:
 	int mCount;
 
 	void AddNode(T data);
-	void DeleteNode(T data);
+	bool DeleteNode(T data);
 	bool DeleteNode(Node<T>* node);
 	void DeleteLastNode();
 	void DeleteFirstNode();
@@ -33,7 +33,7 @@ public:
 	Node<T>* GetFirst();
 	Node<T>* GetLast();
 	Node<T>* GetElement(int number);
-	size_t DetailElements(int iterator);
+	Node<T>* DetailElements(int iterator);
 	char* GetNodeAddress(int iterator);
 	//Node<T>* DetailElement(int number);
 	//T* GetElements(int number);
@@ -69,17 +69,26 @@ inline void LinkedList<T>::AddNode(T nodeToBeAdded) {
 }
 
 template<typename T>
-inline void LinkedList<T>::DeleteNode(T dataToBeDeleted) {
+inline bool LinkedList<T>::DeleteNode(T dataToBeDeleted) {
+	Node<T>* node = nullptr;
 	if (IsEmpty()) {
 		printf("Linked List is empty.\n Returning \n");
 		return false;
 	}
 	else {
+		//now we need to get that data from the linked list using DetailElements()
+		for (int i = 1;i <= GetLength();i++) {
+			node = GetElement(i);
+			if (node->data == dataToBeDeleted) {
+				/*we found the node*/
+				break;
+			}
+		}
 		/*if the node to be deleted is the first one*/
-		Node<T>* node = new Node<T>;
-		node->data = data;
 		if (node == mHead) {
-			mHead = node->next;
+			if (node->next != nullptr) {
+				mHead = node->next;
+			}
 			delete(node);
 			node = 0;
 			printf("node deleted successfully.\n");
@@ -211,7 +220,6 @@ inline void LinkedList<T>::PrintLinkedList() {
 
 template<typename T>
 inline int LinkedList<T>::GetLength() {
-	int length = 0;
 	if (IsEmpty()) {
 		printf("List is empty.\n");	
 	} 
@@ -256,7 +264,7 @@ inline Node<T>* LinkedList<T>::GetElement(int number) {
 	} else {
 		int listLength = mCount;
 		Node<T>* currentNode = mHead;
-		for (int i = 0;i < listLength;i++){
+		for (int i = 1;i <= listLength;i++){
 
 			if (number == i) {
 				printf("Element found in list. Returned. \n");
@@ -265,6 +273,7 @@ inline Node<T>* LinkedList<T>::GetElement(int number) {
 			}
 			//printf("Requested element not found. \n");
 			//return nullptr;	
+			//i think currentnode->currentnode=>next
 		}
 	}
 }
@@ -272,17 +281,25 @@ inline Node<T>* LinkedList<T>::GetElement(int number) {
 
 /*this is an iterator function. Run this in a for loop*/
 template<typename T>
-inline size_t LinkedList<T>::DetailElements(int iterator) {
+inline Node<T>* LinkedList<T>::DetailElements(int iterator) {
 	if (IsEmpty()) {
 		printf("List is empty. In LinkedList::DetailElements().\n");
-		return 0;
+		return nullptr;
 	}
 	else {
+		int currentNodeNumber = 1;
 		int length = GetLength();
 		Node<T>* currentNode = mHead;
-		printf("Nodes->HeapDescriptor's ID is %d \n", currentNode->data->mHeap->mSize);
-		//return currentNode->data->mID;
-		return currentNode->data->mHeap->mSize;
+		while (currentNodeNumber <= length) {
+			if (iterator == currentNodeNumber) {
+				//printf("Node requested found in Node<T>* LinkedList::DetailElements(iterator).\n");
+				return currentNode;
+			}
+			currentNodeNumber++;
+			currentNode = currentNode->next;
+		}
+		//printf("Node requested not found in Node<T>* LinkedList::DetailElements(iterator).\n");
+		return nullptr;
 	}
 }
 
