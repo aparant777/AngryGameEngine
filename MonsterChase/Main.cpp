@@ -21,9 +21,6 @@ HeapAllocator heapallocator = HeapAllocator();
 CMonster* listOfMonsters;
 CMonster monster;
 CPlayer* player;
-CPlayer* player1;
-CPlayer* player2;
-CPlayer* player3;
 int numberOfMonsters;
 char choice = 'a';
 
@@ -31,50 +28,7 @@ int main() {
 
 	srand((unsigned int)time(0));	//set the seed rolling with time
 	
-	//heapallocator.PrintMemorySize();
-
-	char* a = (char*)heapallocator.AllocateMemory(20);
-	
-
-	printf("--------------------------DEALLOCATE--------------------------------\n");
-	heapallocator.DeallocateMemory(a);
-
-	printf("------------------------------------------------------------------------\n");
-	
 	player = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
-	/*player1 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
-	player2 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer))); 
-	player3 = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));*/
-
-	//heapallocator.PrintMemorySize();
-
-	/*
-	player->
-	*/
-
-	//heapallocator.PrintMemorySize();
-	//int length = heapallocator.heapUsedDescriptorList.GetLength();
-	//printf("Length of linked list is %d.\n", length);
-	//heapallocator.heapUsedDescriptorList.DeleteLastNode();
-	//HeapDescriptor* heapDescriptor1 = (HeapDescriptor*)heapallocator.heapUsedDescriptorList.GetElement(1);
-	
-	//send the address to the heapallocator for 
-
-	//heapallocator.DeallocateMemory(player);
-	
-	//heapallocator.heapUsedDescriptorList.PrintLinkedList();
-	//printf("Length of linked list is %d.\n", heapallocator.heapUsedDescriptorList.GetLength());
-	//heapallocator.heapUsedDescriptorList.DeleteFirstNode();
-	//heapallocator.heapUsedDescriptorList.PrintLinkedList();
-	//heapallocator.heapUsedDescriptorList.DeleteFirstNode();
-	
-	//heapallocator.GetHeapSize();
-	//heapallocator.heapUsedDescriptorList.PrintLinkedList();
-
-	//printf("&player = %u. \n", &player);
-	//heapallocator.DeallocateMemory(player);
-
-	//printf("Length of linked list is %d.\n", heapallocator.heapUsedDescriptorList.GetLength());
 
 	printf("\n\n\n");
 
@@ -129,7 +83,7 @@ void Update() {
 void CleanMemory() {
 	/*clean up memory*/
 	delete[] listOfMonsters;
-	//delete player;
+	heapallocator.DeallocateMemory(player);
 	listOfMonsters = 0;
 	player = 0;
 }

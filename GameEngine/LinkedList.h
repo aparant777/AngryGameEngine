@@ -109,7 +109,7 @@ inline bool LinkedList<T>::DeleteNode(T dataToBeDeleted) {
 					//else just delete
 					delete(node);
 					node = 0;
-					printf("node deleted successfully.\n");
+					//printf("node deleted successfully.\n");
 					mCount--;
 					return true;
 				}
@@ -134,7 +134,7 @@ inline bool LinkedList<T>::DeleteNode(Node<T>* node) {
 			mHead = node->next;
 			delete(node);
 			node = 0;
-			printf("node deleted successfully.\n");
+			//printf("node deleted successfully.\n");
 			mCount--;
 			return true;
 		}
@@ -152,7 +152,7 @@ inline bool LinkedList<T>::DeleteNode(Node<T>* node) {
 					//else just delete
 					delete(node);
 					node = 0;
-					printf("node deleted successfully.\n");
+					//printf("node deleted successfully.\n");
 					mCount--;
 					return true;
 				}
@@ -181,7 +181,7 @@ inline void LinkedList<T>::DeleteLastNode() {
 template<typename T>
 inline void LinkedList<T>::DeleteFirstNode() {
 	if (IsEmpty()) {
-		printf("List is empty. \n");
+		//printf("List is empty. \n");
 		return;
 	} else {
 		Node<T>* nodeToBeDeleted;
@@ -192,7 +192,7 @@ inline void LinkedList<T>::DeleteFirstNode() {
 		/*delete the node*/
 		delete(nodeToBeDeleted);
 		mCount--;
-		printf("Node deleted successfully.\n");
+		//printf("Node deleted successfully.\n");
 	}
 }
 
@@ -200,14 +200,14 @@ inline void LinkedList<T>::DeleteFirstNode() {
 template<typename T>
 inline void LinkedList<T>::PrintLinkedList() {
 	if (IsEmpty()) {
-		printf("List is empty. \n");
+		//printf("List is empty. \n");
 		return;
 	} else {
 		int count = mCount;
 		Node<T>* currentNode = mHead;
-		printf("Printing all elements of the list..\n");
+		//printf("Printing all elements of the list..\n");
 		while (count >= 1) {
-			printf("currentNode->data->mID = %d ", currentNode->data->mID);
+			//printf("currentNode->data->mID = %d ", currentNode->data->mID);
 			//printf("address is %d. \n", currentNode->data->mA);
 
 			if (currentNode->next != nullptr) {
@@ -221,7 +221,7 @@ inline void LinkedList<T>::PrintLinkedList() {
 template<typename T>
 inline int LinkedList<T>::GetLength() {
 	if (IsEmpty()) {
-		printf("List is empty.\n");	
+		//printf("List is empty.\n");	
 	} 
 	return mCount;
 }
@@ -239,7 +239,7 @@ inline bool LinkedList<T>::IsEmpty() {
 template<typename T>
 inline Node<T>* LinkedList<T>::GetFirst() {
 	if (IsEmpty()) {
-		printf("List is empty.\n");
+		//printf("List is empty.\n");
 		return nullptr;
 	}
 	return mHead;
@@ -248,7 +248,7 @@ inline Node<T>* LinkedList<T>::GetFirst() {
 template<typename T>
 inline Node<T>* LinkedList<T>::GetLast() {
 	if (IsEmpty()) {
-		printf("List is empty.\n");
+		//printf("List is empty.\n");
 		return nullptr;
 	}
 	return mTail;
@@ -259,7 +259,7 @@ inline Node<T>* LinkedList<T>::GetLast() {
 template<typename T>
 inline Node<T>* LinkedList<T>::GetElement(int number) {
 	if (IsEmpty()) {
-		printf("List is empty.\n");
+		//printf("List is empty.\n");
 		return nullptr;
 	} else {
 		int listLength = mCount;
@@ -267,7 +267,7 @@ inline Node<T>* LinkedList<T>::GetElement(int number) {
 		for (int i = 1;i <= listLength;i++){
 
 			if (number == i) {
-				printf("Element found in list. Returned. \n");
+				//printf("Element found in list. Returned. \n");
 				return currentNode;
 				currentNode = currentNode->next;
 			}
@@ -283,7 +283,7 @@ inline Node<T>* LinkedList<T>::GetElement(int number) {
 template<typename T>
 inline Node<T>* LinkedList<T>::DetailElements(int iterator) {
 	if (IsEmpty()) {
-		printf("List is empty. In LinkedList::DetailElements().\n");
+		//printf("List is empty. In LinkedList::DetailElements().\n");
 		return nullptr;
 	}
 	else {
@@ -307,16 +307,16 @@ inline Node<T>* LinkedList<T>::DetailElements(int iterator) {
 template<typename T>
 inline char * LinkedList<T>::GetNodeAddress(int iterator) {
 	if (IsEmpty()) {
-		printf("List is empty. In LinkedList::DetailElements().\n");
+	//	printf("List is empty. In LinkedList::DetailElements().\n");
 		return nullptr;
 	}
 	else {
 		if (iterator == 0) {
-			printf("First element of list starts from iterator 1.\n");
+			//printf("First element of list starts from iterator 1.\n");
 			return nullptr;
 		}
 		else if (iterator < 0) {
-			printf("enter an iterator equal to or greater than 1.\n");
+		//	printf("enter an iterator equal to or greater than 1.\n");
 			return nullptr;
 		}
 		else {
@@ -332,7 +332,7 @@ inline char * LinkedList<T>::GetNodeAddress(int iterator) {
 				currentNodeNumber++;
 				currentNode = currentNode->next;
 			}
-			printf("element not found of the specific iterator.\n");
+			//printf("element not found of the specific iterator.\n");
 			return nullptr;
 		}
 	}
