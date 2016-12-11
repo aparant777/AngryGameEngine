@@ -66,14 +66,17 @@ static HeapAllocator heapAllocator = HeapAllocator();
 
 
 void HeapAllocator::DeallocateMemory(void* memoryAddress) {
+	printf("In DeallocateMemory()\n");
 	size_t sizeToBeDeleted = 0;
-	
+	int count = heapUsedDescriptorList.mCount;
+	printf("HeapUsedDescriptorList count is %d. \n", count);
 		for (int i = 1;i <= heapUsedDescriptorList.GetLength();i++) {
 		/*Find the respective address of the heap who's address mactches the 'memoryAddress' variable*/
 		if ((char*)(heapUsedDescriptorList.DetailElements(i)->data->mHeap->mAddress_Self) == memoryAddress) {
 			/*we found, the Node, now get its data i.e. the HeapDescriptor*/
 			HeapDescriptor* heapDescriptor = heapUsedDescriptorList.DetailElements(i)->data;
 			/*get the size to be deleted*/
+			printf("printing HeapDescriptors in this list: %d. \n", heapDescriptor->mID);
 			sizeToBeDeleted  = heapDescriptor->mHeap->mSize;
 			/*add the respective heapDescriptor to the FreeHeapDescriptor List*/
 			heapFreeDescriptorList.AddNode(heapDescriptor);
@@ -85,7 +88,7 @@ void HeapAllocator::DeallocateMemory(void* memoryAddress) {
 			break;
 		}
 		else {
-			//printf("The respective address could not be matched from the linked list to the address received to HeapAllocator::DeallocateMemory(). \n");
+			printf("The respective address could not be matched from the linked list to the address received to HeapAllocator::DeallocateMemory(). \n");
 		}
 	}	
 }
@@ -93,6 +96,11 @@ void HeapAllocator::DeallocateMemory(void* memoryAddress) {
 void * HeapAllocator::operator new(size_t memorySize) {
 	return heapAllocator.AllocateMemory(memorySize);
 }
+
+void  HeapAllocator::operator delete(void* memoryAddress) {
+	heapAllocator.DeallocateMemory(memoryAddress);
+}
+
 
 //void * operator new(size_t memorySize) {
 //	return heapAllocator.AllocateMemory(memorySize);

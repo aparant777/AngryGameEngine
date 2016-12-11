@@ -3,7 +3,6 @@
 #include"MemoryAllocator.h"
 #include<stdio.h>
 
-
 struct Heap {
 	void* mAddress_Self;
 	size_t mSize;
@@ -35,8 +34,11 @@ public:
 	/*Deallocate Memory*/
 	void DeallocateMemory(void* memoryAddress);
 
-	/*overloaded 'new' operator: DO NOT USE*/
+	/*class specific -> overloaded 'new' operator*/
 	void* operator new(size_t memorySize);	
+
+	/*class specific -> overloaded 'delete' operator*/
+	void operator delete(void *ptr);
 	
 	/*Print Total Memory size*/
 	void PrintMemorySize();

@@ -1,6 +1,6 @@
 #pragma once
 /*Linked List implementation*/
-/*This is a template class hence all the function implementations will reside in this class*/
+/*This is a template class hence all the function implementations will reside in this .h class*/
 template<class T>
 struct Node {
 	Node<T>* next;

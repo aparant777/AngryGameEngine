@@ -50,7 +50,7 @@ public:
 private:
 
 	/*const varaibles replaced from #define*/
-	const size_t SAMPLE_MEMORY_SIZE_TOTAL = 1024 * 1024;
+	const size_t SAMPLE_MEMORY_SIZE_TOTAL = 1024;
 	const size_t SAMPLE_MEMORY_SIZE_HEAP = 512;
 	const size_t SAMPLE_MEMORY_SIZE_FREEHEAPDESCRIPTOR_LIST = 256;
 	const size_t SAMPLE_MEMORY_SIZE_USEDHEAPDESCRIPTOR_LIST = 256;
