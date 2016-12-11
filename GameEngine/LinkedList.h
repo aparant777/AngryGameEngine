@@ -35,8 +35,6 @@ public:
 	Node<T>* GetElement(int number);
 	Node<T>* DetailElements(int iterator);
 	char* GetNodeAddress(int iterator);
-	//Node<T>* DetailElement(int number);
-	//T* GetElements(int number);
 
 private:
 	

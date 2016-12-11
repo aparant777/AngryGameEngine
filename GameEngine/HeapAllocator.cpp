@@ -2,6 +2,7 @@
 
 MemoryAllocator memoryAllocator = MemoryAllocator();
 static Heap* heap = nullptr;
+static HeapAllocator heapAllocator = HeapAllocator();
  void* HeapAllocator::AllocateMemory(size_t memorySize) {
 
 	printf("Inside AllocateMemory() in HeapAllocator.\n");
@@ -90,8 +91,12 @@ void HeapAllocator::DeallocateMemory(void* memoryAddress) {
 }
 
 void * HeapAllocator::operator new(size_t memorySize) {
-	return nullptr;
+	return heapAllocator.AllocateMemory(memorySize);
 }
+
+//void * operator new(size_t memorySize) {
+//	return heapAllocator.AllocateMemory(memorySize);
+//}
 
 void HeapAllocator::PrintMemorySize() {
 	memoryAllocator.PrintMemorySize();

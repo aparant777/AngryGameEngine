@@ -28,8 +28,9 @@ int main() {
 
 	srand((unsigned int)time(0));	//set the seed rolling with time
 	
-	player = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
-
+	//player = static_cast<CPlayer*>(heapallocator.AllocateMemory(sizeof(CPlayer)));
+	//player = new CPlayer();
+	player = (CPlayer*)heapallocator.operator new (sizeof(CPlayer));
 	printf("\n\n\n");
 
 	if (player != nullptr) {
