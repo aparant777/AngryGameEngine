@@ -1,17 +1,7 @@
 #include"GameObject.h"
 #include"Vector3.h"
-#include<stdint.h>
+#include<stdio.h>
 
-GameObject::GameObject(const Vector3 & position, char * name) : 
-	mPosition (position),
-	mName(name) 
-{	
-}
-
-void GameObject::SetPosition(Vector3 & newPosition) {
-	mPosition = newPosition;
-}
-
-void GameObject::SetActive(bool isItActive) {
-	mIsActive = isItActive;
+void GameObject::PrintPosition() {
+	printf("Position is: (%f, %f, %f). \n", mPosition.GetPositionX(), mPosition.GetPositionY(), mPosition.GetPositionZ());
 }

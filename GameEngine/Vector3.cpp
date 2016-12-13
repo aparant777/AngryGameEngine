@@ -10,9 +10,9 @@ Vector3 Vector3::down = Vector3(0, -1, 0);
 
 /*default vector of <0,0,0>*/
 Vector3::Vector3() {
-	mX = 0;
-	mY = 0;
-	mZ = 0;
+	mX = 0.0f;
+	mY = 0.0f;
+	mZ = 0.0f;
 }
 
 /*vector which takes in parameters*/

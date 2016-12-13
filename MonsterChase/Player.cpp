@@ -10,16 +10,12 @@ CPlayer::CPlayer() { }
 void CPlayer::InitializePlayer() {
 	printf("Enter the name of the player: ");
 	scanf_s("%s", mName, 100);
-
 	
-	mPosition = mPosition.zero;
-	
-
-
+	SetGameObject(new GameObject(Vector3(0,0,0), mName));
 	printf("\n");
 	printf("%s spawned at ", mName);
 	printf("location");
-	mPosition.printInInt();
+	gameObjectPlayer->PrintPosition();
 }
 
 /* will spill out a character to Move or Exit*/
@@ -42,26 +38,32 @@ inline void CPlayer::DecideToMoveORQuit(const char choice) {
 /*Moves the Player, either + or - in X or Y*/
 inline void CPlayer::Move(const char choice) {
 	if (choice == 'A' || choice == 'a') {
-		mPosition += mPosition.left;
+		Vector3 newPosition = gameObjectPlayer->GetPosition() + Vector3::left;
 		printf("%s moved left.\n",mName);
-		Vector3 position = Vector3::left;
+		gameObjectPlayer->SetPosition(newPosition);
+		//gameObjectPlayer->PrintPosition();
 	}
 	else if (choice == 'W' || choice == 'w') {
-		mPosition += mPosition.up;
-		printf("%s moved up.\n",mName);
-		Vector3 position = Vector3::up;
+		Vector3 newPosition = gameObjectPlayer->GetPosition() + Vector3::up;
+		printf("%s moved up.\n", mName);
+		gameObjectPlayer->SetPosition(newPosition);
+		//gameObjectPlayer->PrintPosition();
+
 	}
 	else if (choice == 'S' || choice == 's') {
-		mPosition += mPosition.down;
-		printf("%s moved down.\n",mName);
-		Vector3 position = Vector3::down;
+		Vector3 newPosition = gameObjectPlayer->GetPosition() + Vector3::down;
+		printf("%s moved down.\n", mName);
+		gameObjectPlayer->SetPosition(newPosition);
+		//gameObjectPlayer->PrintPosition();
+
 	}
 	else if (choice == 'D' || choice == 'd') {
-		mPosition += mPosition.right;
-		printf("%s moved right.\n",mName);
-		Vector3 position = Vector3::right;
+		Vector3 newPosition = gameObjectPlayer->GetPosition() + Vector3::right;
+		printf("%s moved right.\n", mName);
+		gameObjectPlayer->SetPosition(newPosition);
+		//gameObjectPlayer->PrintPosition();
 	}
-	mPosition.printInInt();
+	gameObjectPlayer->PrintPosition();
 }
 
 void CPlayer::GetMovementDirectionFromUserInput() {

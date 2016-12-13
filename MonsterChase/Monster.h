@@ -1,13 +1,16 @@
 #pragma once
 #include<cstring>
 #include"Vector3.h"
+#include"GameObject.h"
+#include"IGameObjectController.h"
 
-class CMonster {
+class CMonster : IGameObjectController {
 	
 public:
 	CMonster();
 	~CMonster();
-
+	void SetGameObject(GameObject* gameObject) override { gameObjectMonster = gameObject; }
+	void UpdateGameObject() override {	}
 	void InitializeMonster(CMonster* monster);
 	void Move(CMonster* monster);
 	void EncounterAnotherMonster(CMonster* monster);	
@@ -19,8 +22,8 @@ public:
 	inline float GetPositionY() { return mPosition.GetPositionY(); }
 
 private:
-	char mName[100];
-	Vector3 mPosition;
-	int mlifetime;
+	GameObject* gameObjectMonster;
+	char mName[10];
+
 };
 

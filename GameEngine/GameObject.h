@@ -3,12 +3,20 @@
 
 class GameObject {
 public:
-	GameObject(const Vector3& position, char* name);
+	GameObject(const Vector3& position, char* name) :
+		mName(name),
+		mPosition(position)
+	{
+	}
+		GameObject(const Vector3& position) :
+			mName("default"),
+			mPosition(position)
+	{
+	}
+
 	inline Vector3 GetPosition() const { return mPosition; }
-	void SetPosition(Vector3& newPosition) ;
-	inline bool IsActive() const { return mIsActive; }
-	void SetActive(bool isItActive);
-	//void SetName(char newName[5]);
+	void SetPosition(Vector3 newPosition) { mPosition = newPosition; }
+	void PrintPosition();
 
 private:
 	char* mName;

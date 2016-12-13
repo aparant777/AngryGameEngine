@@ -21,7 +21,6 @@ HeapAllocator heapallocator = HeapAllocator();
 CMonster* listOfMonsters;
 CMonster monster;
 CPlayer* player;
-CPlayer* player1;
 int numberOfMonsters;
 char choice = 'a';
 
@@ -32,10 +31,11 @@ int main() {
 		NEW and DELETE have not been globally overloaded. Since this will mess up usage of STL in later versions of the engine.
 		Since all custom memory allocations go through the HeapAllocator class, the operators overloaded are class specific.
 	*/
-	player = (CPlayer*)heapallocator.operator new (sizeof(CPlayer));
-	player1 = (CPlayer*)heapallocator.operator new (sizeof(CPlayer));
-	heapallocator.DeallocateMemory(player1);
+	
+	//heapallocator.DeallocateMemory(player1);
 	printf("\n\n\n");
+	//player = (CPlayer*)heapallocator.operator new (sizeof(CPlayer));
+	player = new CPlayer();
 
 	if (player != nullptr) {
 		Input();
