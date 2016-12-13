@@ -44,23 +44,30 @@ inline void CPlayer::Move(const char choice) {
 	if (choice == 'A' || choice == 'a') {
 		mPosition += mPosition.left;
 		printf("%s moved left.\n",mName);
-	
+		Vector3 position = Vector3::left;
 	}
 	else if (choice == 'W' || choice == 'w') {
 		mPosition += mPosition.up;
 		printf("%s moved up.\n",mName);
-	
+		Vector3 position = Vector3::up;
 	}
 	else if (choice == 'S' || choice == 's') {
 		mPosition += mPosition.down;
 		printf("%s moved down.\n",mName);
-		
+		Vector3 position = Vector3::down;
 	}
 	else if (choice == 'D' || choice == 'd') {
 		mPosition += mPosition.right;
 		printf("%s moved right.\n",mName);
+		Vector3 position = Vector3::right;
 	}
 	mPosition.printInInt();
 }
+
+void CPlayer::GetMovementDirectionFromUserInput() {
+	
+}
+
+
 
 CPlayer::~CPlayer() { }
