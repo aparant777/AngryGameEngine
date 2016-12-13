@@ -4,8 +4,7 @@
 #include"Vector3.h"
 #include"IGameObjectController.h"
 
-class CPlayer : IGameObjectController
-{
+class CPlayer : IGameObjectController {
 public:
 	CPlayer();	
 	~CPlayer();

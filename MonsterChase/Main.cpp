@@ -44,7 +44,6 @@ int main() {
 		Update();
 		CleanMemory();
 	}
-
 	return 0;
 }
 
@@ -59,6 +58,7 @@ inline void Input() {
 
 void Generate() {
 	listOfMonsters = new CMonster[numberOfMonsters];
+	
 	for (int i = 0;i < numberOfMonsters;i++) {
 		monster.InitializeMonster(&listOfMonsters[i]);
 	}

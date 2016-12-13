@@ -55,7 +55,6 @@ inline void CPlayer::Move(const char choice) {
 		printf("%s moved down.\n", mName);
 		gameObjectPlayer->SetPosition(newPosition);
 		//gameObjectPlayer->PrintPosition();
-
 	}
 	else if (choice == 'D' || choice == 'd') {
 		Vector3 newPosition = gameObjectPlayer->GetPosition() + Vector3::right;
@@ -69,7 +68,5 @@ inline void CPlayer::Move(const char choice) {
 void CPlayer::GetMovementDirectionFromUserInput() {
 	
 }
-
-
 
 CPlayer::~CPlayer() { }

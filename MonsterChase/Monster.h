@@ -5,15 +5,14 @@
 #include"IGameObjectController.h"
 
 class CMonster : IGameObjectController {
-	
 public:
 	CMonster();
 	~CMonster();
 	void SetGameObject(GameObject* gameObject) override { gameObjectMonster = gameObject; }
 	void UpdateGameObject() override {	}
-	void InitializeMonster(CMonster* monster);
-	void Move(CMonster* monster);
-	void EncounterAnotherMonster(CMonster* monster);	
+	void InitializeMonster(int numberOfMonsters, CMonster* listOfMonsters);
+	void Move(int numberOfMonsters, CMonster* listOfMonsters);
+	void EncounterAnotherMonster(CMonster* monster);
 	void CMonster::DisplayMonsterData(CMonster* monster);
 	void FreeMemory(CMonster* monster);
 	bool IsDead();
@@ -24,6 +23,6 @@ public:
 private:
 	GameObject* gameObjectMonster;
 	char mName[10];
-
+	int mLifetime;
 };
 
