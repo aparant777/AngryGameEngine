@@ -12,13 +12,13 @@ public:
 	void UpdateGameObject() override {	}
 	void InitializeMonster(int numberOfMonsters, CMonster* listOfMonsters);
 	void Move(int numberOfMonsters, CMonster* listOfMonsters);
-	void EncounterAnotherMonster(CMonster* monster);
-	void CMonster::DisplayMonsterData(CMonster* monster);
+	void EncounterAnotherMonster(int numberOfMonsters, CMonster* listOfMonsters);
+	void CMonster::DisplayMonsterData(int numberOfMonsters, CMonster* listOfMonsters);
 	void FreeMemory(CMonster* monster);
 	bool IsDead();
 	inline char* GetName() { return mName; }
-	inline float GetPositionX() { return mPosition.GetPositionX(); }
-	inline float GetPositionY() { return mPosition.GetPositionY(); }
+	//inline float GetPositionX() { return mPosition.GetPositionX(); }
+	//inline float GetPositionY() { return mPosition.GetPositionY(); }
 
 private:
 	GameObject* gameObjectMonster;

@@ -58,10 +58,7 @@ inline void Input() {
 
 void Generate() {
 	listOfMonsters = new CMonster[numberOfMonsters];
-	
-	for (int i = 0;i < numberOfMonsters;i++) {
-		monster.InitializeMonster(&listOfMonsters[i]);
-	}
+	monster.InitializeMonster(numberOfMonsters, listOfMonsters);
 }
 
 inline void InitializePlayer() {
@@ -70,18 +67,9 @@ inline void InitializePlayer() {
 
 void Update() {
 	do {
-		for (int i = 0;i < numberOfMonsters;i++) {
-			if (listOfMonsters[i].IsDead() == false) {
-				monster.Move(&listOfMonsters[i]);
-				monster.DisplayMonsterData(&listOfMonsters[i]);
-				monster.EncounterAnotherMonster(&listOfMonsters[i]);
-			}
-			else {
-				monster.FreeMemory(&listOfMonsters[i]);
-			}
-		}
+		monster.Move(numberOfMonsters, listOfMonsters);
+		monster.DisplayMonsterData(numberOfMonsters, listOfMonsters);
 		choice = player->Input();
-
 	} while (choice != 'q') ;
 }
 
