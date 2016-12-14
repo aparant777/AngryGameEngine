@@ -35,9 +35,9 @@ void CMonster::Move(int numberOfMonsters, CMonster* listOfMonsters) {
 		float newPositionX = 0; 
 		float newPositionY = 0;
 		if (choice == 1) {
-			newPositionX = (float)Random(-1, 1);
+			newPositionX = static_cast<float>( Random(-1, 1));
 		} else {
-			newPositionY = (float)Random(-1, 1);
+			newPositionY = static_cast<float>(Random(-1, 1));
 		}
 		Vector3 newPosition = listOfMonsters[i].gameObjectMonster->GetPosition() + Vector3(newPositionX, newPositionY, 0.0f);
 		listOfMonsters[i].gameObjectMonster->SetPosition(newPosition);

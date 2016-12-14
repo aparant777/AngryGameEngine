@@ -21,5 +21,4 @@ public:
 	void SetName(char* name) { mName = name; }
 private:
 	char* mName;
-	
 };
