@@ -164,7 +164,7 @@ inline void MemoryAllocator::UpdateHeapSize_Allocate(const size_t memorySizeRequ
 
 inline void MemoryAllocator::UpdateHeapSize_Deallocate(const size_t memorySizeRequested) {
 	mCurrentMemoryHeapSize += memorySizeRequested;
-	printf("mCurrentMemoryHeapSize = %d. \n", mCurrentMemoryHeapSize);
+//	printf("mCurrentMemoryHeapSize = %d. \n", mCurrentMemoryHeapSize);
 	mTotalMemorySize += memorySizeRequested;
-	printf("mTotalMemorySize = %d. \n", mTotalMemorySize);
+	//printf("mTotalMemorySize = %d. \n", mTotalMemorySize);
 }

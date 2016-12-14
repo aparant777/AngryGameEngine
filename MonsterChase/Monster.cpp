@@ -13,7 +13,7 @@ void CMonster::InitializeMonster(int numberOfMonsters, CMonster* listOfMonsters)
 		scanf_s("%s", &mName, 100);
 		listOfMonsters[i].SetGameObject( new GameObject(Vector3(0, 0, 0), mName));
 		listOfMonsters[i].gameObjectMonster->PrintPosition();
-		listOfMonsters[i].gameObjectMonster->SetPosition(Vector3(Random(0, 100), Random(0, 100), 0));
+		listOfMonsters[i].gameObjectMonster->SetPosition(Vector3(static_cast<float>(Random(0, 100)), static_cast<float>(Random(0, 100)), 0));
 		listOfMonsters[i].mLifetime = Random(10, 15);
 	}
 }
