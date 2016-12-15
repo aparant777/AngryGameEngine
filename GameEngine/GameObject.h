@@ -15,7 +15,7 @@ public:
 	{
 	}
 
-	inline Vector3 GetPosition() const { return mPosition; }
+	Vector3 GetPosition() const { return mPosition; }
 	void SetPosition(Vector3 newPosition) { mPosition = newPosition; }
 	void PrintPosition();
 	void SetName(char* name) { mName = name; }

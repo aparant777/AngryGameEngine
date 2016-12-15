@@ -10,11 +10,11 @@ CMonster::CMonster() { }
 void CMonster::InitializeMonster(int numberOfMonsters, CMonster* listOfMonsters) {
 	for (int i = 0;i < numberOfMonsters;i++) {
 		printf("Enter the name of the monster: ");
-		scanf_s("%s", &mName, 100);
+		scanf_s("%s", &mName, 5);
 		
-		listOfMonsters[i].SetGameObject( new GameObject(Vector3(0, 0, 0), mName));
+		listOfMonsters[i].SetGameObject( new GameObject(Vector3(static_cast<float>(Random(0, 100)), static_cast<float>(Random(0, 100)), 0), mName));
 		listOfMonsters[i].gameObjectMonster->PrintPosition();
-		listOfMonsters[i].gameObjectMonster->SetPosition(Vector3(static_cast<float>(Random(0, 100)), static_cast<float>(Random(0, 100)), 0));
+		//listOfMonsters[i].gameObjectMonster->SetPosition(Vector3(static_cast<float>(Random(0, 100)), static_cast<float>(Random(0, 100)), 0));
 		listOfMonsters[i].mLifetime = Random(10, 15);
 	}
 }
@@ -40,10 +40,10 @@ void CMonster::Move(int numberOfMonsters, CMonster* listOfMonsters) {
 		} else {
 			newPositionY = static_cast<float>(Random(-1, 1));
 		}
-		Vector3 receivedPosition = listOfMonsters[i].gameObjectMonster->GetPosition();
+		Vector3 receivedPosition = tempListArray[i].gameObjectMonster->GetPosition();
 		Vector3 newPosition = receivedPosition + Vector3(newPositionX, newPositionY, 0.0f);
-		listOfMonsters[i].gameObjectMonster->SetPosition(newPosition);
-		listOfMonsters[i].mLifetime--;	//decrease the life of the monster by one
+		tempListArray[i].gameObjectMonster->SetPosition(newPosition);
+		tempListArray[i].mLifetime--;	//decrease the life of the monster by one
 	}	
 }
 

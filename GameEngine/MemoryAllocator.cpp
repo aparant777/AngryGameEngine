@@ -109,11 +109,11 @@ void* MemoryAllocator::MemoryRequest(size_t memorySizeRequested) {
 void* MemoryAllocator::MemoryRequest_HeapDescriptor(size_t heapDescriptorMemorySize) {
 	if (mIsMemoryAllocated) {
 		/*no need to check whether memory requested > size, since sizeof() will be used*/
-		char* tempAddresss = mCurrentFreeHeapDescriptorAddress;
+		char* tempAddresss = mCurrentUsedHeapDescriptorAddress;
 		//bump the pointer
-		mCurrentFreeHeapDescriptorAddress += heapDescriptorMemorySize;
+		mCurrentUsedHeapDescriptorAddress += heapDescriptorMemorySize;
 		//update the size of the heapDescriptor 
-		mCurrentMemoryFreeHeapDescriptorSize -= heapDescriptorMemorySize;
+		mCurrentMemoryUsedHeapDescriptorSize -= heapDescriptorMemorySize;
 
 		return tempAddresss;
 	}else{

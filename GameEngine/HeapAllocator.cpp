@@ -66,7 +66,7 @@ static HeapAllocator heapAllocator = HeapAllocator();
 }
 
  void * HeapAllocator::AllocateMemoryForLinkedList(size_t memorySize) {
-	 return memoryAllocator.MemoryRequest(memorySize);
+	 return memoryAllocator.MemoryRequest_HeapDescriptor(memorySize);
  }
 
 

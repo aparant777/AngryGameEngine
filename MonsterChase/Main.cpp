@@ -41,8 +41,10 @@ int main() {
 	printf("\n\n\n");
 
 	//player = (CPlayer*)heapallocator.operator new (sizeof(CPlayer));
-	//player = new CPlayer();
-	BitArray* bitArray = new BitArray(256, heapallocator, true);
+	player = new CPlayer();
+	printf("size of player is %d. \n", sizeof(CPlayer));
+
+	//BitArray* bitArray = new BitArray(8, heapallocator, true);
 
 	if (player != nullptr) {
 		Input();
@@ -58,6 +60,7 @@ int main() {
 
 inline void Input() {
 	printf("Enter the number of Monsters\n");
+
 	scanf_s("%d", &numberOfMonsters);
 
 	if (numberOfMonsters == 0 || numberOfMonsters < 0) {
@@ -66,7 +69,9 @@ inline void Input() {
 }
 
 void Generate() {
+	printf("size of monster is %d. \n", sizeof(CMonster));
 	listOfMonsters = new CMonster[numberOfMonsters];
+
 	monster.InitializeMonster(numberOfMonsters, listOfMonsters);
 }
 

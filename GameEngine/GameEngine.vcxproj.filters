@@ -60,6 +60,9 @@
     <ClInclude Include="BitArray.h">
       <Filter>Header Files\Math</Filter>
     </ClInclude>
+    <ClInclude Include="FixedSizeAllocator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vector3.cpp">
@@ -82,6 +85,9 @@
     </ClCompile>
     <ClCompile Include="BitArray.cpp">
       <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="FixedSizeAllocator.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -56,6 +56,8 @@ private:
 	const size_t SAMPLE_MEMORY_SIZE_USEDHEAPDESCRIPTOR_LIST = 256;
 	const size_t FREE_MEMORY = 70;	//its F (Free)
 	const size_t USED_MEMORY = 85;	//its U (Used)
+	const size_t FREELIST_MEMORY = 71;	//its U (Used)
+	const size_t USEDLIST_MEMORY = 72;	//its U (Used)
 
 	bool mIsMemoryAllocated;
 	

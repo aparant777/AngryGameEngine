@@ -24,5 +24,6 @@ private:
 	GameObject* gameObjectMonster;
 	char mName[10];
 	int mLifetime;
+	CMonster* tempListArray;
 };
 
