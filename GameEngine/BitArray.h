@@ -1,23 +1,38 @@
 #pragma once
-#include<stdint.h>
-class BitArray {
+#include "HeapAllocator.h"
+#include <stdio.h>
+#include <string.h>
+
+class BitArray
+{
 public:
-
-	BitArray(size_t numberOfBits, bool isInitializedToZero);
-	/*get the bit having value 1*/
-	bool FindFirstSetBit();
-
-	/*set all bits to 0*/
+	BitArray();
+	BitArray(size_t i_numBits, HeapAllocator  i_pManager, bool i_startClear = true);
+	
+	BitArray * Create(size_t i_numBytes, HeapAllocator  i_pManager, bool i_startClear = true);
 	void ClearAll();
+	void SetAll(bool isSetTrue);
 
-	/*Sets all bits to a specific value*/
-	void SetAll(bool isSetAll);
+	bool AreAllClear() const;
+	bool AreAllSet() const;
 
-	~BitArray();
+	bool IsBitSet(size_t bitNumber) const;
+	bool IsBitClear(size_t bitNumber) const;
+
+	void SetBit(size_t bitNumber);
+	void ClearBit(size_t bitNumber);
+
+	size_t GetFirstClearBit() const;
+	size_t GetFirstSetBit() const;
 
 private:
-	uint8_t* mBytes;
-	size_t mNumberOfBytes;
-	size_t mNumberOfBits;
+	
+	uint8_t *m_pBits;
+
+	/*number of bits per byte*/
+	const static size_t bitsPerBytes = 8;
+	
+	/*the number of bits*/
+	size_t m_numBits;
 };
 

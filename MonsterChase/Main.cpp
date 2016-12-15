@@ -16,6 +16,8 @@ void CleanMemory();
 #include"Player.h"
 #include"Main.h"
 #include"GameObject.h"
+#include"BitArray.h"
+
 inline void InitializePlayer();
 HeapAllocator heapallocator = HeapAllocator();
 CMonster* listOfMonsters;
@@ -39,7 +41,8 @@ int main() {
 	printf("\n\n\n");
 
 	//player = (CPlayer*)heapallocator.operator new (sizeof(CPlayer));
-	player = new CPlayer();
+	//player = new CPlayer();
+	BitArray* bitArray = new BitArray(256, heapallocator, true);
 
 	if (player != nullptr) {
 		Input();
@@ -48,6 +51,8 @@ int main() {
 		Update();
 		CleanMemory();
 	}
+
+	system("pause");
 	return 0;
 }
 
