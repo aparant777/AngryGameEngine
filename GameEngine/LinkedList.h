@@ -51,7 +51,7 @@ inline LinkedList<T>::~LinkedList()
 
 template<typename T>
 inline void LinkedList<T>::AddNode(T nodeToBeAdded) {
-	Node<T>* newNode = new Node<T>;
+	Node<T>* newNode = new(true) Node<T>;
 	newNode->data = nodeToBeAdded;
 	/*if the linked list is empty*/
 	if (mHead == nullptr) {
@@ -290,7 +290,7 @@ inline Node<T>* LinkedList<T>::DetailElements(int iterator) {
 		Node<T>* currentNode = mHead;
 		while (currentNodeNumber <= length) {
 			if (iterator == currentNodeNumber) {
-				//printf("Node requested found in Node<T>* LinkedList::DetailElements(iterator).\n");
+				printf("Node requested found in Node<T>* LinkedList::DetailElements(iterator).\n");
 				return currentNode;
 			}
 			currentNodeNumber++;

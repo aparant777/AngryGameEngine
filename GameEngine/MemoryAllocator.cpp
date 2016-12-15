@@ -79,8 +79,7 @@ void* MemoryAllocator::MemoryRequest(size_t memorySizeRequested) {
 					UpdateHeapSize_Allocate(memorySizeRequested);
 					/*update the totalMemorySize now*/
 					mTotalMemorySize -= memorySizeRequested;
-
-					memoryCalledCount++;
+					memoryCalledCount++; 
 					printf("\n Memory Allocator called %d times\n", memoryCalledCount);
 
 					/*finally, send it to user*/

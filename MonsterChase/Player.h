@@ -9,7 +9,7 @@ public:
 	CPlayer();	
 	~CPlayer();
 	void SetGameObject(GameObject* gameObject) override { gameObjectPlayer = gameObject; }
-	void UpdateGameObject() override {	}
+	void UpdateGameObject() override;
 	void InitializePlayer();
 	inline void DecideToMoveORQuit(const char choice);
 	inline void Move(const char choice);

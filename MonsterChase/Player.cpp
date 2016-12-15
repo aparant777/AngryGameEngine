@@ -10,8 +10,13 @@ CPlayer::CPlayer() { }
 void CPlayer::InitializePlayer() {
 	printf("Enter the name of the player: ");
 	scanf_s("%s", mName, 100);
+	printf("player name is %s. \n\n", mName);
+	printf("all oke re..");
+	GameObject* temp = new GameObject(Vector3(0, 0, 0), mName);
+	printf("\n\n till herer we got");
+	SetGameObject(temp);
+	//player->gameObjectPlayer->SetPosition(Vector3::zero);
 	
-	SetGameObject(new GameObject(Vector3(0,0,0), mName));
 	printf("\n");
 	printf("%s spawned at ", mName);
 	printf("location");
@@ -67,6 +72,10 @@ inline void CPlayer::Move(const char choice) {
 
 void CPlayer::GetMovementDirectionFromUserInput() {
 	
+}
+
+void CPlayer::UpdateGameObject() {
+
 }
 
 CPlayer::~CPlayer() { }

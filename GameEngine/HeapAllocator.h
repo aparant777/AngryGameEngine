@@ -31,6 +31,8 @@ public:
 	/*Allocate Memory*/
 	void* AllocateMemory(size_t memorySize);
 
+	void* AllocateMemoryForLinkedList(size_t memorySize);
+
 	/*Deallocate Memory*/
 	void DeallocateMemory(void* memoryAddress);
 

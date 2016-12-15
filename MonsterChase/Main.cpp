@@ -2,7 +2,7 @@
 
 inline void Input();
 void Generate();
-inline void InitializePlayer();
+
 void Update();
 void CleanMemory();
 
@@ -16,14 +16,14 @@ void CleanMemory();
 #include"Player.h"
 #include"Main.h"
 #include"GameObject.h"
-
+inline void InitializePlayer();
 HeapAllocator heapallocator = HeapAllocator();
 CMonster* listOfMonsters;
 CMonster monster;
 CPlayer* player;
 int numberOfMonsters;
 char choice = 'a';
-
+char* a;
 int main() {
 
 	srand((unsigned int)time(0));	//set the seed rolling with time
@@ -31,9 +31,13 @@ int main() {
 		NEW and DELETE have not been globally overloaded. Since this will mess up usage of STL in later versions of the engine.
 		Since all custom memory allocations go through the HeapAllocator class, the operators overloaded are class specific.
 	*/
+	//void* addressReceived = heapallocator.AllocateMemory(sizeof(CPlayer));
 	
+	//player = (CPlayer*)addressReceived;
 	//heapallocator.DeallocateMemory(player1);
+	//player = (CPlayer*)heapallocator.AllocateMemory(sizeof(CPlayer));
 	printf("\n\n\n");
+
 	//player = (CPlayer*)heapallocator.operator new (sizeof(CPlayer));
 	player = new CPlayer();
 
@@ -75,8 +79,10 @@ void Update() {
 
 void CleanMemory() {
 	/*clean up memory*/
-	delete[] listOfMonsters;
+	void* playerAddress = (void*)player;
 	heapallocator.DeallocateMemory(player);
+	delete[] listOfMonsters;
+	
 	listOfMonsters = 0;
 	player = 0;
 }
