@@ -57,6 +57,9 @@
     <ClInclude Include="IGameObjectController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BitArray.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vector3.cpp">
@@ -76,6 +79,9 @@
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BitArray.cpp">
+      <Filter>Source Files\Math</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

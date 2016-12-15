@@ -150,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\MonsterChase\Random.h" />
+    <ClInclude Include="BitArray.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="HeapAllocator.h" />
     <ClInclude Include="IGameObjectController.h" />
@@ -159,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\MonsterChase\Random.cpp" />
+    <ClCompile Include="BitArray.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="HeapAllocator.cpp" />
     <ClCompile Include="LinkedList.cpp" />
