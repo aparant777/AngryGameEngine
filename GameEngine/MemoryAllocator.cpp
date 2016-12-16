@@ -4,7 +4,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include<stdio.h>
-
+#include"FixedSizeAllocator.h"
 
 MemoryAllocator::MemoryAllocator() {
 	mIsMemoryAllocated = false;
@@ -16,7 +16,7 @@ MemoryAllocator::MemoryAllocator() {
 	mCurrentMemoryAddress = nullptr;
 	mCurrentFreeHeapDescriptorAddress = nullptr;
 	mCurrentUsedHeapDescriptorAddress = nullptr;
-
+	printf("in memory allocator function");
 	MemoryAllocated();
 }
 
@@ -31,7 +31,12 @@ inline void MemoryAllocator::MemoryAllocated() {
 	/*give the current memory address as the newly generated address*/
 	mCurrentMemoryAddress = mAllocatedAddress;
 	printf("mAllocatedAddress = %p.\n", (void*)&mAllocatedAddress);
+	//FixedSizeAllocator::GetTheStartingAddress((void*)&mAllocatedAddress);
 	SeperateMemory();
+}
+
+void MemoryAllocator::InitializeMemoryAllocator() {
+	printf("this function is empty.\n");
 }
 
 /*seperate addresses will be given for the Heap, Free and Used Lists*/

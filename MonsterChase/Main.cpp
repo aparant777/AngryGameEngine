@@ -2,7 +2,6 @@
 
 inline void Input();
 void Generate();
-
 void Update();
 void CleanMemory();
 
@@ -17,6 +16,7 @@ void CleanMemory();
 #include"Main.h"
 #include"GameObject.h"
 #include"BitArray.h"
+#include"FixedSizeAllocator.h"
 
 inline void InitializePlayer();
 HeapAllocator heapallocator = HeapAllocator();
@@ -25,31 +25,20 @@ CMonster monster;
 CPlayer* player;
 int numberOfMonsters;
 char choice = 'a';
-char* a;
+
 int main() {
 
+	//FixedSizeAllocator FSA = FixedSizeAllocator();
 	srand((unsigned int)time(0));	//set the seed rolling with time
-	/*
-		NEW and DELETE have not been globally overloaded. Since this will mess up usage of STL in later versions of the engine.
-		Since all custom memory allocations go through the HeapAllocator class, the operators overloaded are class specific.
-	*/
-	//void* addressReceived = heapallocator.AllocateMemory(sizeof(CPlayer));
 	
-	//player = (CPlayer*)addressReceived;
-	//heapallocator.DeallocateMemory(player1);
 	//player = (CPlayer*)heapallocator.AllocateMemory(sizeof(CPlayer));
-	printf("\n\n\n");
-
 	//player = (CPlayer*)heapallocator.operator new (sizeof(CPlayer));
 	player = new CPlayer();
-	printf("size of player is %d. \n", sizeof(CPlayer));
-
-	//BitArray* bitArray = new BitArray(8, heapallocator, true);
 
 	if (player != nullptr) {
 		Input();
-		Generate();
 		InitializePlayer();
+		Generate();
 		Update();
 		CleanMemory();
 	}
@@ -58,6 +47,8 @@ int main() {
 	return 0;
 }
 
+
+///*----------------------------------------------------------WILL NOT BE EXECUTED-------------------------------------------------------------*/
 inline void Input() {
 	printf("Enter the number of Monsters\n");
 
@@ -69,10 +60,8 @@ inline void Input() {
 }
 
 void Generate() {
-	printf("size of monster is %d. \n", sizeof(CMonster));
 	listOfMonsters = new CMonster[numberOfMonsters];
-
-	monster.InitializeMonster(numberOfMonsters, listOfMonsters);
+	monster.InitializeMonster(numberOfMonsters, &listOfMonsters);
 }
 
 inline void InitializePlayer() {
@@ -81,8 +70,8 @@ inline void InitializePlayer() {
 
 void Update() {
 	do {
-		monster.Move(numberOfMonsters, listOfMonsters);
-		monster.DisplayMonsterData(numberOfMonsters, listOfMonsters);
+		monster.Move(numberOfMonsters, &listOfMonsters);
+		//monster.DisplayMonsterData(numberOfMonsters, listOfMonsters);
 		choice = player->Input();
 	} while (choice != 'q') ;
 }
@@ -90,9 +79,10 @@ void Update() {
 void CleanMemory() {
 	/*clean up memory*/
 	void* playerAddress = (void*)player;
-	heapallocator.DeallocateMemory(player);
+	//heapallocator.DeallocateMemory(player);
 	delete[] listOfMonsters;
 	
 	listOfMonsters = 0;
 	player = 0;
 }
+///*----------------------------------------------------------WILL NOT BE EXECUTED-------------------------------------------------------------*/

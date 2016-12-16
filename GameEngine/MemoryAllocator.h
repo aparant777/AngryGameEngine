@@ -47,6 +47,9 @@ public:
 	/*get the Total Memory Size*/
 	inline size_t GetMemorySize() const;
 
+	/*START THE ENTIRE PROCESS BY CALLING THIS FUNCTION*/
+	void InitializeMemoryAllocator();
+
 private:
 
 	/*const varaibles replaced from #define*/
@@ -65,6 +68,7 @@ private:
 	const char* mStartHeapAddress;
 	const char* mStartFreeHeapDescriptorListAddress;
 	const char* mStartUsedHeapDescriptorListAdress;
+
 
 	inline void SeperateMemory();
 	inline void WriteMemory_Free();

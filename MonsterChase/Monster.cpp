@@ -7,15 +7,15 @@
 CMonster::CMonster() { }
 
 /*initializes the Monster class and gives them a random position and lifetime*/
-void CMonster::InitializeMonster(int numberOfMonsters, CMonster* listOfMonsters) {
+void CMonster::InitializeMonster(int numberOfMonsters, CMonster** listOfMonsters) {
 	for (int i = 0;i < numberOfMonsters;i++) {
 		printf("Enter the name of the monster: ");
 		scanf_s("%s", &mName, 5);
 		
-		listOfMonsters[i].SetGameObject( new GameObject(Vector3(static_cast<float>(Random(0, 100)), static_cast<float>(Random(0, 100)), 0), mName));
-		listOfMonsters[i].gameObjectMonster->PrintPosition();
+		listOfMonsters[i]->SetGameObject( new GameObject(Vector3(static_cast<float>(Random(0, 100)), static_cast<float>(Random(0, 100)), 0), mName));
+		listOfMonsters[i]->gameObjectMonster->PrintPosition();
 		//listOfMonsters[i].gameObjectMonster->SetPosition(Vector3(static_cast<float>(Random(0, 100)), static_cast<float>(Random(0, 100)), 0));
-		listOfMonsters[i].mLifetime = Random(10, 15);
+		listOfMonsters[i]->mLifetime = Random(10, 15);
 	}
 }
 
@@ -30,7 +30,7 @@ bool CMonster::IsDead() {
 }
 
 /*Moves the monster randomly, either + or - in X or Y*/
-void CMonster::Move(int numberOfMonsters, CMonster* listOfMonsters) {
+void CMonster::Move(int numberOfMonsters, CMonster** listOfMonsters) {
 	for (int i = 0;i < numberOfMonsters;i++) {
 		int choice = Random(1, 2);
 		float newPositionX = 0; 
@@ -40,10 +40,12 @@ void CMonster::Move(int numberOfMonsters, CMonster* listOfMonsters) {
 		} else {
 			newPositionY = static_cast<float>(Random(-1, 1));
 		}
-		Vector3 receivedPosition = tempListArray[i].gameObjectMonster->GetPosition();
+		Vector3 receivedPosition = listOfMonsters[i]->gameObjectMonster->GetPosition();
 		Vector3 newPosition = receivedPosition + Vector3(newPositionX, newPositionY, 0.0f);
-		tempListArray[i].gameObjectMonster->SetPosition(newPosition);
-		tempListArray[i].mLifetime--;	//decrease the life of the monster by one
+		listOfMonsters[i]->gameObjectMonster->SetPosition(newPosition);
+		//decrease the life of the monster by one
+		listOfMonsters[i]->mLifetime--;	
+		listOfMonsters[i]->gameObjectMonster->PrintPosition();
 	}	
 }
 
@@ -73,4 +75,5 @@ void CMonster::FreeMemory(CMonster* listOfMonsters) {
 }
 
 CMonster::~CMonster() {
+	printf("-----------------in monster destructor-----------------.\n\n\n");
 }

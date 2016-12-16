@@ -31,6 +31,12 @@
     <Filter Include="Source Files\DataStructures">
       <UniqueIdentifier>{0f7dae4f-36e1-4201-8f44-840db2a07dee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Core\FixedSizeAllocator">
+      <UniqueIdentifier>{69953210-e5d6-4ac6-95a6-58fc08337781}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\FixedSizeAllocator">
+      <UniqueIdentifier>{cef36de2-49dc-40ee-8e43-9fcd76bd5d84}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -61,7 +67,7 @@
       <Filter>Header Files\Math</Filter>
     </ClInclude>
     <ClInclude Include="FixedSizeAllocator.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Core\FixedSizeAllocator</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -87,7 +93,7 @@
       <Filter>Source Files\Math</Filter>
     </ClCompile>
     <ClCompile Include="FixedSizeAllocator.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Core\FixedSizeAllocator</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
